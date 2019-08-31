@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCompConsu" language="groovy" pageWidth="690" pageHeight="595" orientation="Landscape" columnWidth="650" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9417e3b0-7ab2-4db6-b816-9ca3079f40ec">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codPago" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     concat(tbpersona.`nombre_per`,' ',
+     tbpersona.`prim_ape_per`,' ',
+     tbpersona.`seg_ape_per`) AS cliente,
+     tbpersona.`num_doc_per` AS tbpersona_num_doc_per,
+     tbpersona.`direccion_per` AS tbpersona_direccion_per,
+     tbreserva.`costo_tot_aloj` AS tbreserva_costo_tot_aloj,
+     tbpago.`tipo_comprobante` AS tbpago_tipo_comprobante,
+     tbpago.`num_comprobante` AS tbpago_num_comprobante,
+     tbpago.`total_pago` AS tbpago_total_pago,
+     tbpago.`fec_gen_comprobante` AS tbpago_fec_gen_comprobante,
+	'Alojamiento' AS descripcion,
+	'1' AS cantidad,
+    tbreserva.`costo_tot_aloj` AS val_unitario,
+    tbreserva.`costo_tot_aloj` AS total
+FROM
+     `tbpersona` tbpersona INNER JOIN `tbcliente` tbcliente ON tbpersona.`id_Persona` = tbcliente.`id_Persona`
+     INNER JOIN `tbreserva` tbreserva ON tbcliente.`id_Persona` = tbreserva.`id_cliente`
+     INNER JOIN `tbpago` tbpago ON tbreserva.`id_Reserva` = tbpago.`id_Reserva` WHERE tbpago.`id_Pago`=$P{codPago}
+UNION
+
+SELECT
+     concat(tbpersona.`nombre_per`,' ',
+     tbpersona.`prim_ape_per`,' ',
+     tbpersona.`seg_ape_per`) AS cliente,
+     tbpersona.`num_doc_per` AS tbpersona_num_doc_per,
+     tbpersona.`direccion_per` AS tbpersona_direccion_per,
+     tbreserva.`costo_tot_aloj` AS tbreserva_costo_tot_aloj,
+     tbpago.`tipo_comprobante` AS tbpago_tipo_comprobante,
+     tbpago.`num_comprobante` AS tbpago_num_comprobante,
+     tbpago.`total_pago` AS tbpago_total_pago,
+     tbpago.`fec_gen_comprobante` AS tbpago_fec_gen_comprobante,
+	 tbproducto.`nombre_prod` as Descripcion,
+	 tbconsumo.`cantidad` as Cantidad,
+     tbproducto.`val_venta_prod` AS Val_Unitario,
+     (tbconsumo.`cantidad` * tbproducto.`val_venta_prod`) AS total
+FROM
+     `tbpersona` tbpersona INNER JOIN `tbcliente` tbcliente ON tbpersona.`id_Persona` = tbcliente.`id_Persona`
+     INNER JOIN `tbreserva` tbreserva ON tbcliente.`id_Persona` = tbreserva.`id_cliente`
+     INNER JOIN `tbpago` tbpago ON tbreserva.`id_Reserva` = tbpago.`id_Reserva`
+     INNER JOIN `tbconsumo` tbconsumo ON tbreserva.`id_Reserva` = tbconsumo.`id_Reserva`
+	 INNER JOIN `tbproducto` tbproducto ON tbconsumo.`id_Producto` = tbproducto.`id_Producto`
+	 WHERE tbpago.`id_Pago`=$P{codPago}]]>
+	</queryString>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="tbpersona_num_doc_per" class="java.lang.String"/>
+	<field name="tbpersona_direccion_per" class="java.lang.String"/>
+	<field name="tbreserva_costo_tot_aloj" class="java.math.BigDecimal"/>
+	<field name="tbpago_tipo_comprobante" class="java.lang.String"/>
+	<field name="tbpago_num_comprobante" class="java.lang.String"/>
+	<field name="tbpago_total_pago" class="java.math.BigDecimal"/>
+	<field name="tbpago_fec_gen_comprobante" class="java.sql.Date"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="val_unitario" class="java.math.BigDecimal"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="194" y="7" width="366" height="47" forecolor="#000066" uuid="881d5763-0738-4319-a635-d61f59e9880c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hotel Paraíso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="194" y="81" width="366" height="20" uuid="1d0661e9-bd8c-409e-a28e-78b2840e63ab"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[www.paraisohotel.com.co]]></text>
+			</staticText>
+			<image>
+				<reportElement x="87" y="7" width="96" height="94" uuid="86c20c54-7adb-43d4-90d4-3461e5ec2e07"/>
+				<imageExpression><![CDATA["C:\\Users\\Chris\\Desktop\\Hotel_Java\\SysJavaHotel\\src\\Recursos\\icons8_dolphin_logo_96px.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="194" y="58" width="366" height="20" uuid="0834f897-47ee-4343-8041-80e58e0007ee"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Km 45 Vía Bogotá - Girardot. Reservas: 6466060 - 3116098749]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="96" splitType="Stretch">
+			<textField>
+				<reportElement x="460" y="15" width="158" height="20" forecolor="#000099" uuid="f9dc5137-8521-4d66-b63c-9d523d5773df"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbpago_tipo_comprobante}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="404" y="70" width="118" height="20" uuid="4d71b3c5-740e-40a7-9658-8a6eaaa7bd53"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbpago_fec_gen_comprobante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="361" y="70" width="38" height="20" uuid="8807cb4c-d984-4087-ba6d-2fdb15795272"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="117" y="40" width="163" height="20" uuid="910ff40b-1491-41f4-8a5e-056caadc9bd0"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbpersona_num_doc_per}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="10" width="313" height="20" uuid="d06e445b-c686-426f-8496-53c236cae9ce"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="46" y="10" width="66" height="20" uuid="25345cd7-e2e1-434b-ba3e-602ae1f2e61c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Señor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="40" width="66" height="20" uuid="2911781d-ef0f-4d57-8e41-aeb324c544f4"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="40" width="158" height="20" forecolor="#CC0000" uuid="e1d7b44b-1122-4c8f-aabf-4218b0797495"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbpago_num_comprobante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="46" y="70" width="66" height="20" uuid="8d5d296b-74d4-457c-b937-30510aa55698"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="117" y="70" width="222" height="20" uuid="bef3fa6a-24fb-4aa6-90ae-e3710fed35f5"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbpersona_direccion_per}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="10" y="10" width="640" height="20" uuid="48fed079-04da-47ec-9919-6074be222cd7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="212" y="10" width="100" height="20" forecolor="#0000CC" uuid="8229b183-8b1b-4d8f-b5d9-27385339995f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="10" width="100" height="20" forecolor="#0000CC" uuid="bf16172b-4efd-431e-9a8d-911da6b4439a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cant.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="10" width="100" height="20" forecolor="#0000CC" uuid="fbb9c376-9c5b-4ddf-bda5-aaea3154779d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Unit.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="532" y="10" width="100" height="20" forecolor="#0000CC" uuid="4cb7cac6-a0f9-4d98-9a9a-d20c9d4f6893"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement x="129" y="10" width="268" height="20" uuid="3e723fa6-876e-4908-8fd2-c9af96262074"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="17" y="10" width="100" height="20" uuid="e24c1bed-50b8-4e3c-84cf-a6eddb0c2e71"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="10" width="100" height="20" uuid="4709d8f5-5069-4d9d-9656-0729ff815743"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{val_unitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="532" y="10" width="100" height="20" uuid="ee3dc095-3b5a-4ba6-b886-8b588c019608"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="460" y="11" width="190" height="20" uuid="e67f4174-5d6b-4acf-904b-589f4720bc69"/>
+			</rectangle>
+			<textField>
+				<reportElement x="532" y="11" width="100" height="20" forecolor="#CC0000" uuid="e845ab1f-5eb2-4098-8caa-3c63a58c7706"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbpago_total_pago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="470" y="11" width="52" height="20" uuid="9fa86f5d-0935-4c96-b5f1-9f5a80f76c31"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

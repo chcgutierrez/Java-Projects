@@ -1,0 +1,855 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package presentacion;
+
+import datos.vHabitacion;
+import datos.vReserva;
+import java.awt.Dimension;
+import java.sql.Date;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import logica.fHabitacion;
+import logica.fReserva;
+import static presentacion.frmInicio.dpnEscritorio;
+
+/**
+ *
+ * @author Chris
+ */
+public class frmReserva extends javax.swing.JInternalFrame {
+
+    /**
+     * Creates new form frmReserva
+     */
+    public frmReserva() {
+        initComponents();
+        setClosable(true);
+        setIconifiable(true);
+        setResizable(false);
+        Mostrar("");
+        Inhabilitar();
+    }
+
+    private String Accion = "Guardar";
+    public static int codUsuario;
+
+    void OcultarCols() {
+        tblRsvaListado.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblRsvaListado.getColumnModel().getColumn(0).setMinWidth(0);
+        tblRsvaListado.getColumnModel().getColumn(0).setPreferredWidth(0);
+
+        tblRsvaListado.getColumnModel().getColumn(1).setMaxWidth(0);
+        tblRsvaListado.getColumnModel().getColumn(1).setMinWidth(0);
+        tblRsvaListado.getColumnModel().getColumn(1).setPreferredWidth(0);
+
+        tblRsvaListado.getColumnModel().getColumn(3).setMaxWidth(0);
+        tblRsvaListado.getColumnModel().getColumn(3).setMinWidth(0);
+        tblRsvaListado.getColumnModel().getColumn(3).setPreferredWidth(0);
+
+        tblRsvaListado.getColumnModel().getColumn(5).setMaxWidth(0);
+        tblRsvaListado.getColumnModel().getColumn(5).setMinWidth(0);
+        tblRsvaListado.getColumnModel().getColumn(5).setPreferredWidth(0);
+    }
+
+    void Inhabilitar() {
+        txtIDreserva.setVisible(false);
+        txtIDhabitacion.setVisible(false);
+        txtIDcliente.setVisible(false);
+        txtIDempleado.setVisible(false);
+
+        jdcFechaRsva.setEnabled(false);
+        txtNumHab.setEnabled(false);
+        btnBusqHab.setEnabled(false);
+        txtNomCliente.setEnabled(false);
+        btnBusqCliente.setEnabled(false);
+        txtNomEmpleado.setEnabled(false);
+        cboTipoRsva.setEnabled(false);
+        jdcFecIniRsva.setEnabled(false);
+        jdcFecFinRsva.setEnabled(false);
+        txtValAloja.setEnabled(false);
+        cboEstRsva.setEnabled(false);
+
+        txtIDreserva.setText("");
+        txtIDhabitacion.setText("");
+        txtIDcliente.setText("");
+        //txtIDempleado.setText("");
+        jdcFechaRsva.setCalendar(null);
+        txtNumHab.setText("");
+        txtNomCliente.setText("");
+        //txtNomEmpleado.setText("");
+        cboTipoRsva.setSelectedIndex(0);
+        jdcFecIniRsva.setCalendar(null);
+        jdcFecFinRsva.setCalendar(null);
+        txtValAloja.setText("");
+        cboEstRsva.setSelectedIndex(0);
+
+        btnGuardar.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        btnBorrar.setEnabled(false);
+    }
+
+    void Habilitar() {
+        txtIDreserva.setVisible(false);
+        txtIDhabitacion.setVisible(false);
+        txtIDcliente.setVisible(false);
+        txtIDempleado.setVisible(false);
+
+        jdcFechaRsva.setEnabled(true);
+        txtNumHab.setEnabled(false);
+        btnBusqHab.setEnabled(true);
+        txtNomCliente.setEnabled(false);
+        btnBusqCliente.setEnabled(true);
+        txtNomEmpleado.setEnabled(false);
+        cboTipoRsva.setEnabled(true);
+        jdcFecIniRsva.setEnabled(true);
+        jdcFecFinRsva.setEnabled(true);
+        txtValAloja.setEnabled(true);
+        cboEstRsva.setEnabled(true);
+
+        txtIDreserva.setText("");
+        txtIDhabitacion.setText("");
+        txtIDcliente.setText("");
+        //txtIDempleado.setText("");
+        jdcFechaRsva.setCalendar(null);
+        txtNumHab.setText("");
+        txtNomCliente.setText("");
+        //txtNomEmpleado.setText("");
+        cboTipoRsva.setSelectedIndex(0);
+        jdcFecIniRsva.setCalendar(null);
+        jdcFecFinRsva.setCalendar(null);
+        txtValAloja.setText("");
+        cboEstRsva.setSelectedIndex(0);
+
+        btnGuardar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnBorrar.setEnabled(true);
+    }
+
+    void Mostrar(String buscar) {
+        try {
+            DefaultTableModel fModelo;
+            fReserva nFuncRsva = new fReserva();
+            fModelo = nFuncRsva.mostrar(buscar);
+            tblRsvaListado.setModel(fModelo);
+            OcultarCols();
+            lblTotalReg.setText("Total Filas: " + Integer.toString(nFuncRsva.totFilas));
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        txtIDreserva = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtNumHab = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtValAloja = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        cboTipoRsva = new javax.swing.JComboBox<>();
+        btnNuevo = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        txtIDhabitacion = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtIDcliente = new javax.swing.JTextField();
+        txtNomCliente = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtIDempleado = new javax.swing.JTextField();
+        txtNomEmpleado = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jdcFechaRsva = new com.toedter.calendar.JDateChooser();
+        jLabel10 = new javax.swing.JLabel();
+        jdcFecIniRsva = new com.toedter.calendar.JDateChooser();
+        jLabel11 = new javax.swing.JLabel();
+        jdcFecFinRsva = new com.toedter.calendar.JDateChooser();
+        jLabel12 = new javax.swing.JLabel();
+        cboEstRsva = new javax.swing.JComboBox<>();
+        btnCancelar = new javax.swing.JButton();
+        btnBusqHab = new javax.swing.JButton();
+        btnBusqCliente = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblRsvaListado = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        lblTotalReg = new javax.swing.JLabel();
+        btnVerConsu = new javax.swing.JButton();
+        btnPagar = new javax.swing.JButton();
+
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
+        jLabel1.setText("Reservas");
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registrar Reserva", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Semibold", 1, 14))); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtIDreserva.setBackground(new java.awt.Color(255, 255, 255));
+        txtIDreserva.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jPanel1.add(txtIDreserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 50, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel2.setText("Habitación:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 30, -1, -1));
+
+        txtNumHab.setEditable(false);
+        txtNumHab.setBackground(new java.awt.Color(204, 204, 204));
+        txtNumHab.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtNumHab.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNumHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumHabActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNumHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 80, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel6.setText("Costo Alojamiento:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 187, -1, -1));
+
+        txtValAloja.setBackground(new java.awt.Color(255, 255, 255));
+        txtValAloja.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtValAloja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValAlojaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtValAloja, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 186, 140, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel7.setText("Fecha Reserva:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
+
+        cboTipoRsva.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        cboTipoRsva.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "          --- Selecione ---", "RESERVA", "ALQUILER" }));
+        cboTipoRsva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTipoRsvaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cboTipoRsva, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 200, -1));
+
+        btnNuevo.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_plus_16px.png"))); // NOI18N
+        btnNuevo.setText("Nuevo");
+        btnNuevo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 225, 79, 30));
+
+        btnGuardar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_save_16px_1.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 225, 79, 30));
+
+        txtIDhabitacion.setBackground(new java.awt.Color(255, 255, 255));
+        txtIDhabitacion.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtIDhabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDhabitacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtIDhabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 120, 50, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel3.setText("Cliente:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 60, -1, -1));
+
+        txtIDcliente.setBackground(new java.awt.Color(255, 255, 255));
+        txtIDcliente.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtIDcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDclienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtIDcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 120, 50, -1));
+
+        txtNomCliente.setEditable(false);
+        txtNomCliente.setBackground(new java.awt.Color(204, 204, 204));
+        txtNomCliente.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtNomCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNomCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 380, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel4.setText("Empleado:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
+        txtIDempleado.setBackground(new java.awt.Color(255, 255, 255));
+        txtIDempleado.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtIDempleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDempleadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtIDempleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 50, -1));
+
+        txtNomEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        txtNomEmpleado.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtNomEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomEmpleadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNomEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 380, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel8.setText("Tipo Reserva:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+
+        jdcFechaRsva.setBackground(new java.awt.Color(255, 255, 255));
+        jdcFechaRsva.setDateFormatString("dd/MM/yyyy");
+        jdcFechaRsva.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanel1.add(jdcFechaRsva, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 140, 25));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel10.setText("Fecha Ingreso:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 156, -1, -1));
+
+        jdcFecIniRsva.setBackground(new java.awt.Color(255, 255, 255));
+        jdcFecIniRsva.setDateFormatString("dd/MM/yyyy");
+        jdcFecIniRsva.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanel1.add(jdcFecIniRsva, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 153, 140, 25));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel11.setText("Fecha Salida:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 156, -1, -1));
+
+        jdcFecFinRsva.setBackground(new java.awt.Color(255, 255, 255));
+        jdcFecFinRsva.setDateFormatString("dd/MM/yyyy");
+        jdcFecFinRsva.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanel1.add(jdcFecFinRsva, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 153, 140, 25));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel12.setText("Estado Reserva:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 187, -1, -1));
+
+        cboEstRsva.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        cboEstRsva.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "     --- Selecione ---", "ALQUILER", "PAGADA", "ANULADA" }));
+        cboEstRsva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboEstRsvaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cboEstRsva, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 186, 170, -1));
+
+        btnCancelar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_close_window_16px_1.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 225, 79, 30));
+
+        btnBusqHab.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnBusqHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_search_more_16px_2.png"))); // NOI18N
+        btnBusqHab.setText("...");
+        btnBusqHab.setToolTipText("Buscar Habitacion");
+        btnBusqHab.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBusqHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBusqHabActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBusqHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 40, 25));
+
+        btnBusqCliente.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnBusqCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_search_more_16px_2.png"))); // NOI18N
+        btnBusqCliente.setText("...");
+        btnBusqCliente.setToolTipText("Buscar Cliente");
+        btnBusqCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBusqCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBusqClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBusqCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 60, 40, 25));
+
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listado Reservas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Semibold", 1, 14))); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblRsvaListado.setBackground(new java.awt.Color(255, 255, 255));
+        tblRsvaListado.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        tblRsvaListado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblRsvaListado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRsvaListadoMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblRsvaListado);
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 64, 690, 160));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel9.setText("Buscar:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 28, -1, -1));
+
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 28, 240, -1));
+
+        btnBuscar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_search_more_16px_2.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 25, 79, 30));
+
+        btnBorrar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_delete_16px.png"))); // NOI18N
+        btnBorrar.setText("Eliminar");
+        btnBorrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 25, 79, 30));
+
+        btnSalir.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_export_16px.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 25, 79, 30));
+
+        lblTotalReg.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        lblTotalReg.setText("Registros:");
+        jPanel2.add(lblTotalReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 237, 90, -1));
+
+        btnVerConsu.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnVerConsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_shopping_cart_16px.png"))); // NOI18N
+        btnVerConsu.setText("Consumo");
+        btnVerConsu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVerConsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerConsuActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnVerConsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 233, 110, 30));
+
+        btnPagar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnPagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/icons8_cash_in_hand_16px.png"))); // NOI18N
+        btnPagar.setText("Realizar Pago");
+        btnPagar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 233, 120, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNumHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumHabActionPerformed
+        // TODO add your handling code here:
+        txtNumHab.transferFocus();
+    }//GEN-LAST:event_txtNumHabActionPerformed
+
+    private void txtValAlojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValAlojaActionPerformed
+        // TODO add your handling code here:
+        txtValAloja.transferFocus();
+    }//GEN-LAST:event_txtValAlojaActionPerformed
+
+    private void cboTipoRsvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTipoRsvaActionPerformed
+        // TODO add your handling code here:
+        cboTipoRsva.transferFocus();
+    }//GEN-LAST:event_cboTipoRsvaActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+        Habilitar();
+        btnGuardar.setText("Guardar");
+        Accion = "Guardar";
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        if (jdcFechaRsva.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Datos Incompletos", "Reserva", JOptionPane.WARNING_MESSAGE);
+            jdcFechaRsva.requestFocus();
+            return;
+        }
+        if (txtNumHab.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Datos Incompletos", "Reserva", JOptionPane.WARNING_MESSAGE);
+            txtNumHab.requestFocus();
+            return;
+        }
+        if (txtNomCliente.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Datos Incompletos", "Reserva", JOptionPane.WARNING_MESSAGE);
+            txtNomCliente.requestFocus();
+            return;
+        }
+        if (txtNomEmpleado.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Datos Incompletos", "Reserva", JOptionPane.WARNING_MESSAGE);
+            txtNomEmpleado.requestFocus();
+            return;
+        }
+        if (cboTipoRsva.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Datos Incompletos", "Reserva", JOptionPane.WARNING_MESSAGE);
+            cboTipoRsva.requestFocus();
+            return;
+        }
+        if (jdcFecIniRsva.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Datos Incompletos", "Reserva", JOptionPane.WARNING_MESSAGE);
+            jdcFecIniRsva.requestFocus();
+            return;
+        }
+        if (jdcFecFinRsva.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Datos Incompletos", "Reserva", JOptionPane.WARNING_MESSAGE);
+            jdcFecFinRsva.requestFocus();
+            return;
+        }
+        if (txtValAloja.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Datos Incompletos", "Reserva", JOptionPane.WARNING_MESSAGE);
+            txtValAloja.requestFocus();
+            return;
+        }
+
+        vReserva fDatosRsva = new vReserva();
+        fReserva nFuncRsva = new fReserva();
+        //Calendario para fechas
+        Calendar rsvaCal;
+        int dia, mes, anno;
+
+        fDatosRsva.setCodigoHab(Integer.valueOf(txtIDhabitacion.getText()));
+        fDatosRsva.setCodigoCli(Integer.valueOf(txtIDcliente.getText()));
+        fDatosRsva.setCodigoEmp(codUsuario);
+        fDatosRsva.setTipoRsva(String.valueOf(cboTipoRsva.getSelectedItem()));
+
+        rsvaCal = jdcFechaRsva.getCalendar();//fecha reserva        
+        dia = rsvaCal.get(Calendar.DAY_OF_MONTH);
+        mes = rsvaCal.get(Calendar.MONTH);
+        anno = rsvaCal.get(Calendar.YEAR) - 1900;//para formato del año        
+        fDatosRsva.setFechaRsva(new Date(anno, mes, dia));
+
+        rsvaCal = jdcFecIniRsva.getCalendar();//fecha inicia reserva        
+        dia = rsvaCal.get(Calendar.DAY_OF_MONTH);
+        mes = rsvaCal.get(Calendar.MONTH);
+        anno = rsvaCal.get(Calendar.YEAR) - 1900;//para formato del año        
+        fDatosRsva.setFecIniRsva(new Date(anno, mes, dia));
+
+        rsvaCal = jdcFecFinRsva.getCalendar();//fecha fin reserva        
+        dia = rsvaCal.get(Calendar.DAY_OF_MONTH);
+        mes = rsvaCal.get(Calendar.MONTH);
+        anno = rsvaCal.get(Calendar.YEAR) - 1900;//para formato del año        
+        fDatosRsva.setFecFinRsva(new Date(anno, mes, dia));
+
+        fDatosRsva.setCostoRsva(Double.valueOf(txtValAloja.getText()));
+        fDatosRsva.setEstRsva(String.valueOf(cboEstRsva.getSelectedItem()));
+
+        if (Accion.equals("Guardar")) {
+            if (nFuncRsva.GuardarRsva(fDatosRsva)) {
+                JOptionPane.showMessageDialog(this, "Reserva Guardada Correctamente", "Reserva", JOptionPane.INFORMATION_MESSAGE);
+
+                Mostrar("");
+                Inhabilitar();
+
+                //Ocupar la Habitacion
+                fHabitacion nFuncHab = new fHabitacion();
+                vHabitacion nDatosHab = new vHabitacion();
+                nDatosHab.setIdHab(Integer.valueOf(txtIDhabitacion.getText()));
+                nFuncHab.OcuparHab(nDatosHab);
+            }
+
+        } else if (Accion.equals("Editar")) {
+            fDatosRsva.setIdReserva(Integer.valueOf(txtIDreserva.getText()));
+            fDatosRsva.setCodigoEmp(Integer.valueOf(txtIDempleado.getText()));
+            if (nFuncRsva.EditarRsva(fDatosRsva)) {
+                JOptionPane.showMessageDialog(this, "Edición Realizada Correctamente", "Reserva", JOptionPane.INFORMATION_MESSAGE);
+                Mostrar("");
+                Inhabilitar();
+            }
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void tblRsvaListadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRsvaListadoMouseClicked
+        // TODO add your handling code here:
+        btnGuardar.setText("Editar");
+        Habilitar();
+        btnBorrar.setEnabled(true);
+        Accion = "Editar";
+
+        int tFila = tblRsvaListado.rowAtPoint(evt.getPoint());
+        txtIDreserva.setText(tblRsvaListado.getValueAt(tFila, 0).toString());
+        txtIDhabitacion.setText(tblRsvaListado.getValueAt(tFila, 1).toString());
+        txtNumHab.setText(tblRsvaListado.getValueAt(tFila, 2).toString());
+        txtIDcliente.setText(tblRsvaListado.getValueAt(tFila, 3).toString());
+        txtNomCliente.setText(tblRsvaListado.getValueAt(tFila, 4).toString());
+        txtIDempleado.setText(tblRsvaListado.getValueAt(tFila, 5).toString());
+        txtNomEmpleado.setText(tblRsvaListado.getValueAt(tFila, 6).toString());
+        cboTipoRsva.setSelectedItem(tblRsvaListado.getValueAt(tFila, 7).toString());
+        jdcFechaRsva.setDate(Date.valueOf(tblRsvaListado.getValueAt(tFila, 8).toString()));
+        jdcFecIniRsva.setDate(Date.valueOf(tblRsvaListado.getValueAt(tFila, 9).toString()));
+        jdcFecFinRsva.setDate(Date.valueOf(tblRsvaListado.getValueAt(tFila, 10).toString()));
+        txtValAloja.setText(tblRsvaListado.getValueAt(tFila, 11).toString());
+        cboEstRsva.setSelectedItem(tblRsvaListado.getValueAt(tFila, 12).toString());
+
+    }//GEN-LAST:event_tblRsvaListadoMouseClicked
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        if (txtBuscar.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Ingrese un criterio", "Reserva", JOptionPane.WARNING_MESSAGE);
+            txtBuscar.requestFocus();
+            return;
+        } else {
+            Mostrar(txtBuscar.getText());
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        // TODO add your handling code here:
+        if (!txtIDreserva.getText().equals("")) {
+            int Confirmar = JOptionPane.showConfirmDialog(this, "¿Eliminar la Reserva?", "Confirmar", 2);
+            if (Confirmar == 0) {
+                fReserva nFuncRsva = new fReserva();
+                vReserva fDatosRsva = new vReserva();
+
+                fDatosRsva.setIdReserva(Integer.parseInt(txtIDreserva.getText()));
+                nFuncRsva.BorrarRsva(fDatosRsva);
+                JOptionPane.showMessageDialog(this, "Registro Borrado", "Reserva", JOptionPane.INFORMATION_MESSAGE);
+                Mostrar("");
+                Inhabilitar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione un registro", "Reserva", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(this, "¿Desea cerrar el formulario?", "Reserva",
+                JOptionPane.ERROR_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtIDhabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDhabitacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDhabitacionActionPerformed
+
+    private void txtIDclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDclienteActionPerformed
+
+    private void txtNomClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomClienteActionPerformed
+
+    private void txtIDempleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDempleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDempleadoActionPerformed
+
+    private void txtNomEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomEmpleadoActionPerformed
+
+    private void cboEstRsvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEstRsvaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboEstRsvaActionPerformed
+
+    private void btnBusqHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusqHabActionPerformed
+        // TODO add your handling code here:
+        frmVistaHab nForma = new frmVistaHab();
+        nForma.toFront();
+        nForma.setVisible(true);
+    }//GEN-LAST:event_btnBusqHabActionPerformed
+
+    private void btnBusqClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusqClienteActionPerformed
+        // TODO add your handling code here:
+        frmVistaClientes nForma = new frmVistaClientes();
+        nForma.toFront();
+        nForma.setVisible(true);
+    }//GEN-LAST:event_btnBusqClienteActionPerformed
+
+    private void btnVerConsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerConsuActionPerformed
+        // TODO add your handling code here:
+        int sFila = tblRsvaListado.getSelectedRow();
+        frmConsumo.codRsva = tblRsvaListado.getValueAt(sFila, 0).toString();
+        frmConsumo.Cliente = tblRsvaListado.getValueAt(sFila, 4).toString();
+        frmConsumo nFormaConsu = new frmConsumo();
+        frmInicio.dpnEscritorio.add(nFormaConsu);
+
+        Dimension tamaEscritorio = dpnEscritorio.getSize();
+        Dimension tamaForm = nFormaConsu.getSize();
+        nFormaConsu.setLocation((tamaEscritorio.width - tamaForm.width) / 2, (tamaEscritorio.height - tamaForm.height) / 2);
+
+        nFormaConsu.toFront();
+        nFormaConsu.setVisible(true);
+    }//GEN-LAST:event_btnVerConsuActionPerformed
+
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        // TODO add your handling code here:
+        int fila = tblRsvaListado.getSelectedRow();
+
+        frmPago.codReserva = tblRsvaListado.getValueAt(fila, 0).toString();
+        frmPago.cliente = tblRsvaListado.getValueAt(fila, 4).toString();
+        frmPago.totRsva = Double.valueOf(tblRsvaListado.getValueAt(fila, 11).toString());
+        frmPago.codHabitacion = tblRsvaListado.getValueAt(fila, 1).toString();
+        frmPago.habitacion = tblRsvaListado.getValueAt(fila, 2).toString();
+
+        frmPago nPago = new frmPago();
+        frmInicio.dpnEscritorio.add(nPago);
+        nPago.toFront();
+        nPago.setVisible(true);
+        Dimension tamaEscritorio = dpnEscritorio.getSize();
+        Dimension tamaForm = nPago.getSize();
+        nPago.setLocation((tamaEscritorio.width - tamaForm.width) / 2, (tamaEscritorio.height - tamaForm.height) / 2);
+
+    }//GEN-LAST:event_btnPagarActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmReserva().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBusqCliente;
+    private javax.swing.JButton btnBusqHab;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnPagar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnVerConsu;
+    private javax.swing.JComboBox<String> cboEstRsva;
+    private javax.swing.JComboBox<String> cboTipoRsva;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private com.toedter.calendar.JDateChooser jdcFecFinRsva;
+    private com.toedter.calendar.JDateChooser jdcFecIniRsva;
+    private com.toedter.calendar.JDateChooser jdcFechaRsva;
+    private javax.swing.JLabel lblTotalReg;
+    private javax.swing.JTable tblRsvaListado;
+    private javax.swing.JTextField txtBuscar;
+    public static javax.swing.JTextField txtIDcliente;
+    public static javax.swing.JTextField txtIDempleado;
+    public static javax.swing.JTextField txtIDhabitacion;
+    private javax.swing.JTextField txtIDreserva;
+    public static javax.swing.JTextField txtNomCliente;
+    public static javax.swing.JTextField txtNomEmpleado;
+    public static javax.swing.JTextField txtNumHab;
+    private javax.swing.JTextField txtValAloja;
+    // End of variables declaration//GEN-END:variables
+}
