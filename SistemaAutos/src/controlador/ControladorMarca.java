@@ -11,7 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.MarcaDAO;
 import modelo.MarcaEnt;
 import vista.frmMarca;
@@ -35,6 +37,7 @@ public class ControladorMarca implements ActionListener {
         this.frmMarcaControl.btnNuevo.addActionListener(this);
         this.frmMarcaControl.btnEditar.addActionListener(this);
         this.frmMarcaControl.btnGuardar.addActionListener(this);
+        this.frmMarcaControl.btnCargar.addActionListener(this);
         this.frmMarcaControl.btnCerrar.addActionListener(this);
         this.frmMarcaControl.btnVldMarca.addActionListener(this);
     }
@@ -55,7 +58,12 @@ public class ControladorMarca implements ActionListener {
             Guardar();
         }
 
-        //Pulsar boton Guardar
+        //Pulsar boton Cargar
+        if (e.getSource() == frmMarcaControl.btnCargar) {//Valida origen del evento
+            Cargar();
+        }
+
+        //Pulsar boton Cerrar
         if (e.getSource() == frmMarcaControl.btnCerrar) {//Valida origen del evento
             Cerrar();
         }
@@ -167,6 +175,15 @@ public class ControladorMarca implements ActionListener {
                 JOptionPane.YES_NO_OPTION, JOptionPane.YES_NO_OPTION, Cerrar) == JOptionPane.YES_OPTION) {
             frmMarcaControl.dispose();
         }
+    }
+
+    public void Cargar() {//Metodo para Cerrar
+        JFileChooser jfcVentana = new JFileChooser();
+        jfcVentana.setDialogTitle("Cargar archivo");
+        jfcVentana.setApproveButtonText("Cargar");
+        int seleccion = jfcVentana.showOpenDialog(frmMarcaControl);//Donde quero abrir
+        FileNameExtensionFilter jfcArcFiltro = new FileNameExtensionFilter("CSV & TXT", "csv", "txt");
+        jfcVentana.setFileFilter(jfcArcFiltro);
     }
 
     public void LimpiarMarca() {//Metodo para limpiar los controles
