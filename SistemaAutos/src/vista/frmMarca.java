@@ -47,7 +47,6 @@ public class frmMarca extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtbDataMarca = new javax.swing.JTable();
-        jfcCargar = new javax.swing.JFileChooser();
         jToolBar1 = new javax.swing.JToolBar();
         btnNuevo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -151,7 +150,6 @@ public class frmMarca extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jtbDataMarca);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 185, 420, 80));
-        jPanel1.add(jfcCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 400, 210));
 
         jToolBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jToolBar1.setFloatable(false);
@@ -323,7 +321,6 @@ public class frmMarca extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     public javax.swing.JToolBar jToolBar1;
-    public javax.swing.JFileChooser jfcCargar;
     public javax.swing.JTable jtbDataMarca;
     public javax.swing.JRadioButton rdbMarcaAct;
     public javax.swing.JRadioButton rdbMarcaInac;
