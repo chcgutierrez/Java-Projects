@@ -1,0 +1,180 @@
+body{
+	font: 15px Arial, Helvetica, sans-serif;
+	padding: 0;
+	margin: 0;
+	background: linear-gradient(to bottom right, #006600 0%, #669999 100%);
+}
+
+header{
+	min-height: 95px;
+	background: linear-gradient(to bottom right, #669999 0%, #336699 100%);
+	color: #FFF;
+	border-bottom: 5px solid #000;
+}
+
+header h1{
+	padding-top: 15px;
+	text-align: center;
+	color: #000;
+}
+
+header nav{
+	float: left;
+	margin-bottom: 5px;
+}
+
+/*lista los menús (vinculos)*/
+header li{
+	float: left;
+	display: inline;
+	padding: 0 5px 0 5px;
+	padding-bottom: 5px;
+}
+
+/*area de los menús (vinculos)*/
+header nav a{
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 15px;
+	margin-right: 30px;
+	padding-bottom: 5px;
+}
+
+header a:hover{
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+header .actual a{
+	margin-bottom: 10px;
+	color: #fff;
+	font-weight: bold;
+}
+
+header .resaltar{
+	margin-bottom: 5px;
+	color: #FFF;
+	font-weight: bold;
+}
+
+#hdrCaja .cajaFoto img{
+	position: absolute;
+	padding: 3px;
+	width: 85px;
+	height: 85px;
+	top: 3px;
+	right: 25px;
+}
+
+#cabecera{	
+	min-height: 300px;
+	background: url('../img/fondo.jpg') no-repeat 0 -400px;
+	text-align: center;
+	color: #FFF;
+}
+
+#cabecera h1{
+	padding-top: 65px;
+	margin-left: : 100px;
+	font-size: 55px;
+	margin-bottom: 10px solid: #000;
+}
+
+#cabecera p{
+	font-size: 25px;
+}
+
+.main{
+	background: #6699ff;
+}
+
+.color1{
+	background: #B0C4DE;
+	color: #000;
+}
+
+.cajon{
+	min-height: 200px;
+}
+
+.cajon img{
+	position: relative;
+	top: 6px;
+	right: -110px;	
+}
+
+.cajon p{
+	text-align: justify;
+}
+
+.cajon h2{
+	text-align: center;
+}
+
+#galeria h2{
+	padding-top: 60px;
+	font-weight: bold;
+}
+
+#galeria img{
+	width: 500px;
+	height: 275px;
+}
+
+#redes img{
+	width: 40px;
+	height: 40px;
+}
+
+
+
+/*Formulario*/
+#suscripcion{
+	min-height: 100px;	
+	padding: 15px;
+	color: #FFF;
+}
+
+#suscripcion h2{
+	float: left;
+	color: #fff;
+	position: relative;
+	top: 10px;
+	left: 175px;
+}
+
+.boton1{
+	background: #3366ff;
+	float: right;
+	height: 50px;
+	border: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 35px;
+	border-radius: 5px;
+	position: relative;
+	top: 8px;
+	right: 190px;
+}
+
+.boton1 a{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.boton1 a:hover{
+	color: #000;
+	font-weight: bold;
+}
+
+footer{
+	padding-top: 5px;
+}
+
+
+aside{
+	background-color: #ff6600;
+	color: #FFF;
+}
+
