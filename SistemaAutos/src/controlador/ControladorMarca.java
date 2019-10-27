@@ -5,18 +5,31 @@
  */
 package controlador;
 
-import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.awt.*;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.awt.event.ActionListener;
-import javax.swing.Icon;
+import java.io.*;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.*;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelo.*;
 import modelo.MarcaDAO;
 import modelo.MarcaEnt;
-import vista.frmMarca;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+import vista.*;
 
 /**
  *
@@ -27,10 +40,11 @@ public class ControladorMarca implements ActionListener {
     private MarcaEnt reuMarcaEnt;//Objeto del tipo MarcaEnt
     private MarcaDAO reuMarcaDAO;//Objeto del tipo MarcaDAO
     private frmMarca frmMarcaControl;//Objeto del tipo frmMarca
+    private frmBsqMarca frmBusqueda;
 
     byte flgAct = 0;
 
-    public ControladorMarca(MarcaEnt reuMarcaEnt, MarcaDAO reuMarcaDAO, frmMarca frmMarcaControl) {
+    public ControladorMarca(MarcaEnt reuMarcaEnt, MarcaDAO reuMarcaDAO, frmMarca frmMarcaControl, frmBsqMarca frmBusqueda) {
         this.reuMarcaEnt = reuMarcaEnt;
         this.reuMarcaDAO = reuMarcaDAO;
         this.frmMarcaControl = frmMarcaControl;
@@ -40,6 +54,7 @@ public class ControladorMarca implements ActionListener {
         this.frmMarcaControl.btnCargar.addActionListener(this);
         this.frmMarcaControl.btnCerrar.addActionListener(this);
         this.frmMarcaControl.btnVldMarca.addActionListener(this);
+        this.frmMarcaControl.btnImprimir.addActionListener(this);
     }
 
     //Eventos Botones
@@ -60,7 +75,12 @@ public class ControladorMarca implements ActionListener {
 
         //Pulsar boton Cargar
         if (e.getSource() == frmMarcaControl.btnCargar) {//Valida origen del evento
-            Cargar();
+            LeerPlantilla();
+        }
+
+        //Pulsar boton Imprimir
+        if (e.getSource() == frmMarcaControl.btnImprimir) {//Valida origen del evento
+            Imprimir();
         }
 
         //Pulsar boton Cerrar
@@ -72,6 +92,29 @@ public class ControladorMarca implements ActionListener {
         if (e.getSource() == frmMarcaControl.btnVldMarca) {//Valida origen del evento
             Validar();
         }
+    }
+
+    //Instancia de conexion a BD para el controlador
+    private Connection multiConexBD = new ConectaBD().conectarDB();
+
+    public void Imprimir() {//Metodo para mostrar el reporte
+        Map P = new HashMap();
+        JasperReport objReport;
+        JasperPrint objImpReport;
+
+        try {
+            objReport = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                    + //Ruta del proyecto
+                    "\\src\\reportes\\rptMarcas.jrxml"); //Ruta del reporte
+            objImpReport = JasperFillManager.fillReport(objReport, P, multiConexBD);
+            JasperViewer vistaReport = new JasperViewer(objImpReport, false);
+            vistaReport.setVisible(true);
+            vistaReport.setResizable(false);
+            vistaReport.setTitle("Reporte de Marcas - MVC");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void Guardar() {//Metodo para Guardar y Editar
@@ -177,13 +220,46 @@ public class ControladorMarca implements ActionListener {
         }
     }
 
-    public void Cargar() {//Metodo para Cerrar
-        JFileChooser jfcVentana = new JFileChooser();
-        jfcVentana.setDialogTitle("Cargar archivo");
-        jfcVentana.setApproveButtonText("Cargar");
-        int seleccion = jfcVentana.showOpenDialog(frmMarcaControl);//Donde quero abrir
-        FileNameExtensionFilter jfcArcFiltro = new FileNameExtensionFilter("CSV & TXT", "csv", "txt");
-        jfcVentana.setFileFilter(jfcArcFiltro);
+    public void ReadF() {
+        ArchivoMarca plantilla = new ArchivoMarca();
+        try {
+            plantilla.LeerPlantilla();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void LeerPlantilla() {//Metodo para Cerrar
+        JFileChooser jfcSeleccion = new JFileChooser();
+        jfcSeleccion.setDialogTitle("Cargar archivo");
+        jfcSeleccion.setApproveButtonText("Cargar");
+        jfcSeleccion.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileNameExtensionFilter arcFiltro = new FileNameExtensionFilter("Archivos txt", "txt");
+        jfcSeleccion.setFileFilter(arcFiltro);
+        int selEstado = jfcSeleccion.showOpenDialog(frmMarcaControl);
+        if (selEstado == JFileChooser.APPROVE_OPTION) {
+            try {
+                String arcRuta = jfcSeleccion.getSelectedFile().getAbsolutePath();
+                FileInputStream nArchivo = new FileInputStream(arcRuta);
+                DataInputStream datEntrada = new DataInputStream(nArchivo);
+                BufferedReader bfrLectura = new BufferedReader(new InputStreamReader(datEntrada));
+                String arcLineas;
+                while ((arcLineas = bfrLectura.readLine()) != null) {
+                    System.out.println(arcLineas);
+                }
+                datEntrada.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+//            Cargar();
+        }
+//        FileNameExtensionFilter jfcArcFiltro = new FileNameExtensionFilter("CSV & TXT", "csv", "txt");
+//        jfcVentana.setFileFilter(jfcArcFiltro);
+    }
+
+    private void BsqMarca() {
+
     }
 
     public void LimpiarMarca() {//Metodo para limpiar los controles
