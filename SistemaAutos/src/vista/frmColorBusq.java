@@ -11,12 +11,12 @@ import javax.swing.JFileChooser;
  *
  * @author Chris
  */
-public class frmBsqMarca extends javax.swing.JFrame {
+public class frmColorBusq extends javax.swing.JFrame {
 
     /**
      * Creates new form frmMarca
      */
-    public frmBsqMarca() {
+    public frmColorBusq() {
         initComponents();
     }
 
@@ -33,12 +33,12 @@ public class frmBsqMarca extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        btnBusqOK = new javax.swing.JButton();
+        btnColorOK = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtDescMarca = new javax.swing.JTextField();
+        txtDescColor = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jtbDatosMarcas = new javax.swing.JTable();
-        btnBusqMarca = new javax.swing.JButton();
+        jtbColorDatos = new javax.swing.JTable();
+        btnColorBusq = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,19 +59,19 @@ public class frmBsqMarca extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBusqOK.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBusqOK.setText("Aceptar");
-        jPanel1.add(btnBusqOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+        btnColorOK.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnColorOK.setText("Aceptar");
+        jPanel1.add(btnColorOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Descripcion");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        txtDescMarca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDescMarca.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jPanel1.add(txtDescMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 310, -1));
+        txtDescColor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDescColor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel1.add(txtDescColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 310, -1));
 
-        jtbDatosMarcas.setModel(new javax.swing.table.DefaultTableModel(
+        jtbColorDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
@@ -79,17 +79,17 @@ public class frmBsqMarca extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jtbDatosMarcas);
-        if (jtbDatosMarcas.getColumnModel().getColumnCount() > 0) {
-            jtbDatosMarcas.getColumnModel().getColumn(0).setResizable(false);
-            jtbDatosMarcas.getColumnModel().getColumn(0).setPreferredWidth(25);
+        jScrollPane3.setViewportView(jtbColorDatos);
+        if (jtbColorDatos.getColumnModel().getColumnCount() > 0) {
+            jtbColorDatos.getColumnModel().getColumn(0).setResizable(false);
+            jtbColorDatos.getColumnModel().getColumn(0).setPreferredWidth(25);
         }
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 470, 80));
 
-        btnBusqMarca.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBusqMarca.setText("Buscar");
-        jPanel1.add(btnBusqMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
+        btnColorBusq.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnColorBusq.setText("Buscar");
+        jPanel1.add(btnColorBusq, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,36 +122,38 @@ public class frmBsqMarca extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmBsqMarca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmColorBusq.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmBsqMarca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmColorBusq.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmBsqMarca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmColorBusq.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmBsqMarca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmColorBusq.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmBsqMarca().setVisible(true);
+                new frmColorBusq().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.ButtonGroup btgMarca;
-    public javax.swing.JButton btnBusqMarca;
-    public javax.swing.JButton btnBusqOK;
+    public javax.swing.JButton btnColorBusq;
+    public javax.swing.JButton btnColorOK;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    public javax.swing.JTable jtbDatosMarcas;
-    public javax.swing.JTextField txtDescMarca;
+    public javax.swing.JTable jtbColorDatos;
+    public javax.swing.JTextField txtDescColor;
     // End of variables declaration//GEN-END:variables
 
 }

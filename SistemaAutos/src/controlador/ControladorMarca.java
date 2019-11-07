@@ -39,17 +39,16 @@ public class ControladorMarca implements ActionListener {
 
     private MarcaEnt reuMarcaEnt;//Objeto del tipo MarcaEnt
     private MarcaDAO reuMarcaDAO;//Objeto del tipo MarcaDAO
-    private frmMarca frmMarcaControl;//Objeto del tipo frmMarca
-    private frmBsqMarca frmBusqueda;
-
+    public static frmMarca frmMarcaControl;//Objeto del tipo frmMarca
     byte flgAct = 0;
 
-    public ControladorMarca(MarcaEnt reuMarcaEnt, MarcaDAO reuMarcaDAO, frmMarca frmMarcaControl, frmBsqMarca frmBusqueda) {
+    public ControladorMarca(MarcaEnt reuMarcaEnt, MarcaDAO reuMarcaDAO, frmMarca frmMarcaControl) {
         this.reuMarcaEnt = reuMarcaEnt;
         this.reuMarcaDAO = reuMarcaDAO;
         this.frmMarcaControl = frmMarcaControl;
         this.frmMarcaControl.btnNuevo.addActionListener(this);
         this.frmMarcaControl.btnEditar.addActionListener(this);
+        this.frmMarcaControl.btnBuscar.addActionListener(this);
         this.frmMarcaControl.btnGuardar.addActionListener(this);
         this.frmMarcaControl.btnCargar.addActionListener(this);
         this.frmMarcaControl.btnCerrar.addActionListener(this);
@@ -68,9 +67,22 @@ public class ControladorMarca implements ActionListener {
             MenuEditar();
         }
 
+        //Pulsar boton Buscar
+        if (e.getSource() == frmMarcaControl.btnBuscar) {//Valida origen del evento
+            Buscar();
+        }
+
         //Pulsar boton Guardar
         if (e.getSource() == frmMarcaControl.btnGuardar) {//Valida origen del evento
-            Guardar();
+            Icon Vacio = new ImageIcon(getClass().getResource("/img/icons8_close_window_32px.png"));
+
+            if (frmMarcaControl.txtNomMarca.getText().length() == 0) {
+                JOptionPane.showMessageDialog(frmMarcaControl, "Datos incompletos", "Guardar - MVC", JOptionPane.ERROR_MESSAGE, Vacio);
+                frmMarcaControl.txtNomMarca.requestFocusInWindow();
+            } else {
+                Guardar();
+            }
+            
         }
 
         //Pulsar boton Cargar
@@ -88,9 +100,17 @@ public class ControladorMarca implements ActionListener {
             Cerrar();
         }
 
-        //Pulsar boton Guardar
+        //Pulsar boton Validar
         if (e.getSource() == frmMarcaControl.btnVldMarca) {//Valida origen del evento
-            Validar();
+
+            Icon Vacio = new ImageIcon(getClass().getResource("/img/icons8_close_window_32px.png"));
+
+            if (frmMarcaControl.txtCodMarca.getText().length() == 0) {
+                JOptionPane.showMessageDialog(frmMarcaControl, "Debe ingresar un criterio", "Validación - MVC", JOptionPane.ERROR_MESSAGE, Vacio);
+                frmMarcaControl.txtCodMarca.requestFocusInWindow();
+            } else {
+                Validar();
+            }
         }
     }
 
@@ -199,7 +219,11 @@ public class ControladorMarca implements ActionListener {
         frmMarcaControl.setTitle("Gestión Marcas - MVC");
         frmMarcaControl.setVisible(true);
         frmMarcaControl.jtbDataMarca.setModel(reuMarcaDAO.VerMarca());
-        frmMarcaControl.jtbDataMarca.setEnabled(false);
+        //Celdas no editables
+        for (int col = 0; col < frmMarcaControl.jtbDataMarca.getColumnCount(); col++) {
+            Class<?> col_class = frmMarcaControl.jtbDataMarca.getColumnClass(col);
+            frmMarcaControl.jtbDataMarca.setDefaultEditor(col_class, null); //Retira editor
+        }
     }
 
     String TraerEstadoMarca() {//Metodo tipo String para el estado
@@ -210,6 +234,19 @@ public class ControladorMarca implements ActionListener {
         } else {
             return null;
         }
+    }
+
+    public void Buscar() {
+        frmBsqMarca AppfrmBusqMarca = new frmBsqMarca();
+        MarcaEnt AppMarcaEnt = new MarcaEnt();//Instancio y creo un nuevo objeto
+        MarcaDAO AppMarcaDAO = new MarcaDAO();//Instancio y creo un nuevo objeto
+        ControlBusqMarca AppBusqMarca = new ControlBusqMarca(AppMarcaEnt, AppMarcaDAO, AppfrmBusqMarca);
+        AppBusqMarca.IniciarBusqMarca();
+        AppfrmBusqMarca.setVisible(true);//Invoco el metodo
+        AppfrmBusqMarca.setDefaultCloseOperation(2);
+        //codigoB = AppBusqMarca.BusqOK();
+//        AppfrmBusqMarca.dispose();
+
     }
 
     public void Cerrar() {//Metodo para Cerrar
@@ -258,10 +295,6 @@ public class ControladorMarca implements ActionListener {
 //        jfcVentana.setFileFilter(jfcArcFiltro);
     }
 
-    private void BsqMarca() {
-
-    }
-
     public void LimpiarMarca() {//Metodo para limpiar los controles
         frmMarcaControl.txtCodMarca.setText("");
         frmMarcaControl.txtNomMarca.setText("");
@@ -279,6 +312,7 @@ public class ControladorMarca implements ActionListener {
 
     public void MenuNuevo() {//Metodo para limpiar los controles
         flgAct = 0;
+        frmMarcaControl.btnBuscar.setEnabled(true);
         frmMarcaControl.btnEditar.setEnabled(false);
         frmMarcaControl.btnBorrar.setEnabled(false);
         frmMarcaControl.btnGuardar.setEnabled(false);
@@ -340,5 +374,4 @@ public class ControladorMarca implements ActionListener {
         frmMarcaControl.txaObsMarca.setEnabled(true);
 
     }
-
 }

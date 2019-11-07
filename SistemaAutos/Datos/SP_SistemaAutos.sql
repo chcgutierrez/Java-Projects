@@ -82,6 +82,24 @@ CALL SP_MOSTRAR_MARCA();
 
 #select * from tb_marca where idMarca='10006'
 
+/*
+================================================================================
+Procedimiento: SP_MOSTRAR_MARCA
+Objetivo: Mostrar los datos en la tabla tb_marca
+Autor: @chcgutierrez
+Fecha: 28/09/2019
+================================================================================
+*/
+
+CREATE PROCEDURE SP_BUSQ_MARCA(
+	nomMarca VARCHAR(100)) 
+    SELECT
+		cod_marca,
+        nom_marca
+	FROM tb_marca WHERE estado_marca='A' AND nom_marca LIKE CONCAT('%', nomMarca, '%');
+
+CALL SP_BUSQ_MARCA('H');
+
 
 
 
