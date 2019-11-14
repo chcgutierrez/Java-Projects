@@ -21,13 +21,22 @@ public class AppSysAutos {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        ColorBD AppColorBD = new ColorBD();//Instancio y creo un nuevo objeto
-        ColorDAO AppColorDAO = new ColorDAO();//Instancio y creo un nuevo objeto
-        frmColor AppfrmColor = new frmColor();//Instancio y creo un nuevo objeto
+        CiudadBD AppCiudadBD = new CiudadBD();//Instancio y creo un nuevo objeto
+        CiudadDAO AppCiudadDAO = new CiudadDAO();//Instancio y creo un nuevo objeto
+        frmCiudad AppfrmCiudad = new frmCiudad();//Instancio y creo un nuevo objeto
         //Instancio y creo un nuevo objeto y paso los anteriores como parametro
-        ControladorColor AppControlColor = new ControladorColor(AppColorBD, AppColorDAO, AppfrmColor);
-        AppControlColor.IniciarColor();//Invoco el metodo para el form
-        AppfrmColor.setVisible(true);//Invoco el metodo
+        ControladorCiudad AppControlCiudad = new ControladorCiudad(AppCiudadBD, AppCiudadDAO, AppfrmCiudad);
+        AppControlCiudad.IniciarCiudad();//Invoco el metodo para el form
+        AppfrmCiudad.setVisible(true);//Invoco el metodo
+        
+//        // TODO code application logic here
+//        ColorBD AppColorBD = new ColorBD();//Instancio y creo un nuevo objeto
+//        ColorDAO AppColorDAO = new ColorDAO();//Instancio y creo un nuevo objeto
+//        frmColor AppfrmColor = new frmColor();//Instancio y creo un nuevo objeto
+//        //Instancio y creo un nuevo objeto y paso los anteriores como parametro
+//        ControladorColor AppControlColor = new ControladorColor(AppColorBD, AppColorDAO, AppfrmColor);
+//        AppControlColor.IniciarColor();//Invoco el metodo para el form
+//        AppfrmColor.setVisible(true);//Invoco el metodo
         
 //        // TODO code application logic here
 //        MarcaEnt AppMarcaEnt = new MarcaEnt();//Instancio y creo un nuevo objeto

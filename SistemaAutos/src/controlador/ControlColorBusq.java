@@ -51,7 +51,7 @@ public class ControlColorBusq implements ActionListener {
         frmBusqColor.setTitle("Búsqueda Marcas - MVC");
 //        frmBusqColor.set
         frmBusqColor.setVisible(true);
-        frmBusqColor.jtbColorDatos.setModel(reuColorDAO.BusqMarca(reuColorBD));
+        frmBusqColor.jtbColorDatos.setModel(reuColorDAO.BusqColor(reuColorBD));
         TableColumn colA = frmBusqColor.jtbColorDatos.getColumnModel().getColumn(0);
         colA.setPreferredWidth(90);
         colA.setMaxWidth(90);
@@ -90,7 +90,7 @@ public class ControlColorBusq implements ActionListener {
 
         reuColorBD.setNomColor(frmBusqColor.txtDescColor.getText());
         try {
-            frmBusqColor.jtbColorDatos.setModel(reuColorDAO.BusqMarca(reuColorBD));
+            frmBusqColor.jtbColorDatos.setModel(reuColorDAO.BusqColor(reuColorBD));
             frmBusqColor.jtbColorDatos.setEnabled(true);
         } catch (HeadlessException hexc) {
             System.out.println(hexc);

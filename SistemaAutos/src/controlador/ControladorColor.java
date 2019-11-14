@@ -149,7 +149,7 @@ public class ControladorColor implements ActionListener {
             reuColorBD.setEstColor(TraerEstadoColor());
             reuColorBD.setObsColor(frmColorControl.txaObsColor.getText());
             try {
-                if (reuColorDAO.GuardarMarca(reuColorBD)) {//Invoca la clase con el metodo para Guardar
+                if (reuColorDAO.GuardarColor(reuColorBD)) {//Invoca la clase con el metodo para Guardar
                     //Muestro el mensaje de exito
                     JOptionPane.showMessageDialog(frmColorControl, "Nuevo registro guardado", "Guardar - MVC", JOptionPane.OK_OPTION, Guardar);
                     MenuNuevo();//Limpio los controles
@@ -166,7 +166,7 @@ public class ControladorColor implements ActionListener {
             reuColorBD.setEstColor(TraerEstadoColor());
             reuColorBD.setObsColor(frmColorControl.txaObsColor.getText());
             try {
-                if (reuColorDAO.EditarMarca(reuColorBD)) {//Invoca la clase con el metodo para Editar
+                if (reuColorDAO.EditarColor(reuColorBD)) {//Invoca la clase con el metodo para Editar
                     //Muestro el mensaje de exito
                     JOptionPane.showMessageDialog(frmColorControl, "Registro existente editado", "Editar - MVC", JOptionPane.OK_OPTION, Editar);
                     MenuNuevo();//Limpio los controles
@@ -184,7 +184,7 @@ public class ControladorColor implements ActionListener {
         Icon Validar = new ImageIcon(getClass().getResource("/img/icons8_help_32px.png"));
         reuColorBD.setCodColor(frmColorControl.txtCodColor.getText());
         try {
-            if (reuColorDAO.ValidaMarca(reuColorBD)) {
+            if (reuColorDAO.ValidaColor(reuColorBD)) {
                 if (JOptionPane.showConfirmDialog(frmColorControl, "Ya existen datos. Mostrar Datos?", "Validar - MVC",
                         JOptionPane.YES_NO_OPTION, JOptionPane.YES_NO_OPTION, Validar) == JOptionPane.YES_OPTION) {
                     MenuValidar();

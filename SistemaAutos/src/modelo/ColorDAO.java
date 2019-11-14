@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class ColorDAO extends ConectaBD { //La clase hereda de la Conexion a BD
     
     //Metodo Guardar
-    public boolean GuardarMarca(ColorBD objColor) {//Recibe objeto tipo ColorBD
+    public boolean GuardarColor(ColorBD objColor) {//Recibe objeto tipo ColorBD
 
         Connection reuConex = conectarDB();//Variable de tipo connection
 
@@ -36,7 +36,7 @@ public class ColorDAO extends ConectaBD { //La clase hereda de la Conexion a BD
     }
     
     //Metodo Editar
-    public boolean EditarMarca(ColorBD objColor) {//Recibe objeto tipo ColorBD
+    public boolean EditarColor(ColorBD objColor) {//Recibe objeto tipo ColorBD
 
         Connection reuConex = conectarDB();//Variable de tipo connection
 
@@ -57,7 +57,7 @@ public class ColorDAO extends ConectaBD { //La clase hereda de la Conexion a BD
     }
 
     //Metodo Validar
-    public boolean ValidaMarca(ColorBD objColor) {//Recibe objeto tipo ColorBD
+    public boolean ValidaColor(ColorBD objColor) {//Recibe objeto tipo ColorBD
 
         Connection reuConex = conectarDB();//Variable de tipo connection
         ResultSet rslSet = null;
@@ -114,16 +114,16 @@ public class ColorDAO extends ConectaBD { //La clase hereda de la Conexion a BD
     }
     
     //Metodo Búsqueda
-    public DefaultTableModel BusqMarca(ColorBD objColor) {//Recibe objeto tipo ColorBD
+    public DefaultTableModel BusqColor(ColorBD objColor) {//Recibe objeto tipo ColorBD
 
-        DefaultTableModel modBusqMarca = null;//Modelo para la tabla
+        DefaultTableModel modBusqColor = null;//Modelo para la tabla
         Connection reuConex = conectarDB();//Variable de tipo connection
         ResultSet rslSet = null;//ResultSet para el conjunto de resultados
         try {
     
-            modBusqMarca = new DefaultTableModel();//Encabezados de las columnas
-            modBusqMarca.addColumn("Código");
-            modBusqMarca.addColumn("Descripción");
+            modBusqColor = new DefaultTableModel();//Encabezados de las columnas
+            modBusqColor.addColumn("Código");
+            modBusqColor.addColumn("Descripción");
 
             String datosBusq[] = new String[2];//Arreglo para las filas
 
@@ -134,12 +134,12 @@ public class ColorDAO extends ConectaBD { //La clase hereda de la Conexion a BD
             while (rslSet.next()) {//Pone el valor en cada campo del arreglo
                 datosBusq[0] = rslSet.getString("cod_color");
                 datosBusq[1] = rslSet.getString("nom_color");
-                modBusqMarca.addRow(datosBusq);//Agrega las filas al modelo
+                modBusqColor.addRow(datosBusq);//Agrega las filas al modelo
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return modBusqMarca;//Devuelve el modelo con los datos
+        return modBusqColor;//Devuelve el modelo con los datos
     }
 }
