@@ -21,13 +21,22 @@ public class AppSysAutos {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        CiudadBD AppCiudadBD = new CiudadBD();//Instancio y creo un nuevo objeto
-        CiudadDAO AppCiudadDAO = new CiudadDAO();//Instancio y creo un nuevo objeto
-        frmCiudad AppfrmCiudad = new frmCiudad();//Instancio y creo un nuevo objeto
+        TipoBD AppTipoBD = new TipoBD();//Instancio y creo un nuevo objeto
+        TipoDAO AppTipoDAO = new TipoDAO();//Instancio y creo un nuevo objeto
+        frmTipo AppfrmTipo = new frmTipo();//Instancio y creo un nuevo objeto
         //Instancio y creo un nuevo objeto y paso los anteriores como parametro
-        ControladorCiudad AppControlCiudad = new ControladorCiudad(AppCiudadBD, AppCiudadDAO, AppfrmCiudad);
-        AppControlCiudad.IniciarCiudad();//Invoco el metodo para el form
-        AppfrmCiudad.setVisible(true);//Invoco el metodo
+        ControladorTipo AppControlTipo = new ControladorTipo(AppTipoBD, AppTipoDAO, AppfrmTipo);
+        AppControlTipo.IniciarTipo();//Invoco el metodo para el form
+        AppfrmTipo.setVisible(true);//Invoco el metodo
+        
+//        // TODO code application logic here
+//        CiudadBD AppCiudadBD = new CiudadBD();//Instancio y creo un nuevo objeto
+//        CiudadDAO AppCiudadDAO = new CiudadDAO();//Instancio y creo un nuevo objeto
+//        frmCiudad AppfrmCiudad = new frmCiudad();//Instancio y creo un nuevo objeto
+//        //Instancio y creo un nuevo objeto y paso los anteriores como parametro
+//        ControladorCiudad AppControlCiudad = new ControladorCiudad(AppCiudadBD, AppCiudadDAO, AppfrmCiudad);
+//        AppControlCiudad.IniciarCiudad();//Invoco el metodo para el form
+//        AppfrmCiudad.setVisible(true);//Invoco el metodo
         
 //        // TODO code application logic here
 //        ColorBD AppColorBD = new ColorBD();//Instancio y creo un nuevo objeto

@@ -48,7 +48,7 @@ public class ControlColorBusq implements ActionListener {
         //Iniciar propiedades del form
         frmBusqColor.setResizable(false);
         frmBusqColor.setLocationRelativeTo(null);
-        frmBusqColor.setTitle("Búsqueda Marcas - MVC");
+        frmBusqColor.setTitle("Búsqueda Color - MVC");
 //        frmBusqColor.set
         frmBusqColor.setVisible(true);
         frmBusqColor.jtbColorDatos.setModel(reuColorDAO.BusqColor(reuColorBD));

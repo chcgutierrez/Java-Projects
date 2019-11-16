@@ -216,7 +216,7 @@ public class ControladorCiudad implements ActionListener {
         //Iniciar propiedades del form
         frmCiudadControl.setResizable(false);
         frmCiudadControl.setLocationRelativeTo(null);
-        frmCiudadControl.setTitle("Gestión Marcas - MVC");
+        frmCiudadControl.setTitle("Gestión Ciudad - MVC");
         frmCiudadControl.setVisible(true);
         frmCiudadControl.jtbDataCiudad.setModel(reuCiudadDAO.VerCiudad());
         //Celdas no editables

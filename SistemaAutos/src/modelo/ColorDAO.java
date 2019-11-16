@@ -81,36 +81,36 @@ public class ColorDAO extends ConectaBD { //La clase hereda de la Conexion a BD
     
     //Ver Todos
     public DefaultTableModel VerColor() {
-        DefaultTableModel modMarca = null;//Modelo para la tabla
+        DefaultTableModel modColor = null;//Modelo para la tabla
         Connection reuConex = conectarDB();//Variable de tipo connection
         ResultSet rslSet = null;//ResultSet para el conjunto de resultados
         try {
     
-            modMarca = new DefaultTableModel();//Encabezados de las columnas
-            modMarca.addColumn("Código");
-            modMarca.addColumn("Descripción");
-            modMarca.addColumn("Estado");
-            modMarca.addColumn("Fecha Act");
-            modMarca.addColumn("Observaciones");
+            modColor = new DefaultTableModel();//Encabezados de las columnas
+            modColor.addColumn("Código");
+            modColor.addColumn("Descripción");
+            modColor.addColumn("Estado");
+            modColor.addColumn("Fecha Act");
+            modColor.addColumn("Observaciones");
 
-            String datosMarca[] = new String[5];//Arreglo para las filas
+            String datosColor[] = new String[5];//Arreglo para las filas
 
             //Invoca el SP y pasa los parametros
             CallableStatement Mostrar = reuConex.prepareCall("CALL SP_MOSTRAR_COLOR");
             rslSet = Mostrar.executeQuery();
             while (rslSet.next()) {//Pone el valor en cada campo del arreglo
-                datosMarca[0] = rslSet.getString("cod_color");
-                datosMarca[1] = rslSet.getString("nom_color");
-                datosMarca[2] = rslSet.getString("estado_color");
-                datosMarca[3] = rslSet.getString("fec_act");
-                datosMarca[4] = rslSet.getString("obs_color");
-                modMarca.addRow(datosMarca);//Agrega las filas al modelo
+                datosColor[0] = rslSet.getString("cod_color");
+                datosColor[1] = rslSet.getString("nom_color");
+                datosColor[2] = rslSet.getString("estado_color");
+                datosColor[3] = rslSet.getString("fec_act");
+                datosColor[4] = rslSet.getString("obs_color");
+                modColor.addRow(datosColor);//Agrega las filas al modelo
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return modMarca;//Devuelve el modelo con los datos
+        return modColor;//Devuelve el modelo con los datos
     }
     
     //Metodo Búsqueda

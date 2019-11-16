@@ -216,7 +216,7 @@ public class ControladorColor implements ActionListener {
         //Iniciar propiedades del form
         frmColorControl.setResizable(false);
         frmColorControl.setLocationRelativeTo(null);
-        frmColorControl.setTitle("Gestión Marcas - MVC");
+        frmColorControl.setTitle("Gestión Color - MVC");
         frmColorControl.setVisible(true);
         frmColorControl.jtbDataColor.setModel(reuColorDAO.VerColor());
         //Celdas no editables

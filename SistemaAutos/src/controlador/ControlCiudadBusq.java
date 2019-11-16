@@ -48,7 +48,7 @@ public class ControlCiudadBusq implements ActionListener {
         //Iniciar propiedades del form
         frmBusqCiudad.setResizable(false);
         frmBusqCiudad.setLocationRelativeTo(null);
-        frmBusqCiudad.setTitle("Búsqueda Marcas - MVC");
+        frmBusqCiudad.setTitle("Búsqueda Ciudad - MVC");
 //        frmBusqCiudad.set
         frmBusqCiudad.setVisible(true);
         frmBusqCiudad.jtbDatosCiudad.setModel(reuCiudadDAO.BusqCiudad(reuCiudadBD));
