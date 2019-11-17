@@ -21,13 +21,22 @@ public class AppSysAutos {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        TipoBD AppTipoBD = new TipoBD();//Instancio y creo un nuevo objeto
-        TipoDAO AppTipoDAO = new TipoDAO();//Instancio y creo un nuevo objeto
-        frmTipo AppfrmTipo = new frmTipo();//Instancio y creo un nuevo objeto
+        RepuestoBD AppRepuestoBD = new RepuestoBD();//Instancio y creo un nuevo objeto
+        RepuestoDAO AppRepuestoDAO = new RepuestoDAO();//Instancio y creo un nuevo objeto
+        frmRepuesto AppfrmRepuesto = new frmRepuesto();//Instancio y creo un nuevo objeto
         //Instancio y creo un nuevo objeto y paso los anteriores como parametro
-        ControladorTipo AppControlTipo = new ControladorTipo(AppTipoBD, AppTipoDAO, AppfrmTipo);
-        AppControlTipo.IniciarTipo();//Invoco el metodo para el form
-        AppfrmTipo.setVisible(true);//Invoco el metodo
+        ControladorRepuesto AppControlRepu = new ControladorRepuesto(AppRepuestoBD, AppRepuestoDAO, AppfrmRepuesto);
+        AppControlRepu.IniciarRepuesto();//Invoco el metodo para el form
+        AppfrmRepuesto.setVisible(true);//Invoco el metodo
+        
+//        // TODO code application logic here
+//        TipoBD AppTipoBD = new TipoBD();//Instancio y creo un nuevo objeto
+//        TipoDAO AppTipoDAO = new TipoDAO();//Instancio y creo un nuevo objeto
+//        frmTipo AppfrmTipo = new frmTipo();//Instancio y creo un nuevo objeto
+//        //Instancio y creo un nuevo objeto y paso los anteriores como parametro
+//        ControladorTipo AppControlTipo = new ControladorTipo(AppTipoBD, AppTipoDAO, AppfrmTipo);
+//        AppControlTipo.IniciarTipo();//Invoco el metodo para el form
+//        AppfrmTipo.setVisible(true);//Invoco el metodo
         
 //        // TODO code application logic here
 //        CiudadBD AppCiudadBD = new CiudadBD();//Instancio y creo un nuevo objeto
