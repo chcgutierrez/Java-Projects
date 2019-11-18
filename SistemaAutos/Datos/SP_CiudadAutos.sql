@@ -120,6 +120,23 @@ CALL SP_BUSQ_CIUDAD('T');
 
 select * from tb_ciudad;
 
+/*
+================================================================================
+Procedimiento: SP_CBO_CIUDAD
+Objetivo: Llenar jComboBox con datos de la tabla tb_ciudad
+Autor: @chcgutierrez
+Fecha: 06/11/2019
+================================================================================
+*/
+
+CREATE PROCEDURE SP_CBO_CIUDAD() 
+    SELECT
+		idCiudad,
+        nom_ciudad
+	FROM tb_ciudad WHERE estado_ciudad='A';
+
+CALL SP_CBO_CIUDAD();
+
 
 
 

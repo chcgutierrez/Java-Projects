@@ -74,11 +74,22 @@ public class ControladorRepuesto implements ActionListener {
 
         //Pulsar boton Guardar
         if (e.getSource() == frmRepuestoControl.btnGuardar) {//Valida origen del evento
+
             Icon Vacio = new ImageIcon(getClass().getResource("/img/icons8_close_window_32px.png"));
 
+            String strTipo = frmRepuestoControl.cboTipoRepu.getSelectedItem().toString();
+
             if (frmRepuestoControl.txtNomRepu.getText().length() == 0) {
-                JOptionPane.showMessageDialog(frmRepuestoControl, "Datos incompletos", "Guardar - MVC", JOptionPane.ERROR_MESSAGE, Vacio);
+                JOptionPane.showMessageDialog(frmRepuestoControl, "Datos Incompletos", "Guardar - MVC", JOptionPane.ERROR_MESSAGE, Vacio);
                 frmRepuestoControl.txtNomRepu.requestFocusInWindow();
+            } else if (strTipo.equals("  - Seleccione -  ")) {
+                JOptionPane.showMessageDialog(frmRepuestoControl, "Seleccion Inválida", "Guardar - MVC", JOptionPane.ERROR_MESSAGE, Vacio);
+                frmRepuestoControl.cboTipoRepu.requestFocusInWindow();
+
+            } else if (frmRepuestoControl.txtCantRepu.getText().length() == 0) {
+                JOptionPane.showMessageDialog(frmRepuestoControl, "Datos Incompletos", "Guardar - MVC", JOptionPane.ERROR_MESSAGE, Vacio);
+                frmRepuestoControl.txtCantRepu.requestFocusInWindow();
+
             } else {
                 Guardar();
             }

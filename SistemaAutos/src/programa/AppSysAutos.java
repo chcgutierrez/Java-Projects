@@ -21,13 +21,22 @@ public class AppSysAutos {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        RepuestoBD AppRepuestoBD = new RepuestoBD();//Instancio y creo un nuevo objeto
-        RepuestoDAO AppRepuestoDAO = new RepuestoDAO();//Instancio y creo un nuevo objeto
-        frmRepuesto AppfrmRepuesto = new frmRepuesto();//Instancio y creo un nuevo objeto
+        TipoDocBD AppTipoDocBD = new TipoDocBD();//Instancio y creo un nuevo objeto
+        TipoDocDAO AppTipoDocDAO = new TipoDocDAO();//Instancio y creo un nuevo objeto
+        frmTipoDoc AppfrmTipoDoc = new frmTipoDoc();//Instancio y creo un nuevo objeto
         //Instancio y creo un nuevo objeto y paso los anteriores como parametro
-        ControladorRepuesto AppControlRepu = new ControladorRepuesto(AppRepuestoBD, AppRepuestoDAO, AppfrmRepuesto);
-        AppControlRepu.IniciarRepuesto();//Invoco el metodo para el form
-        AppfrmRepuesto.setVisible(true);//Invoco el metodo
+        ControladorTipoDoc AppControlTipoDoc = new ControladorTipoDoc(AppTipoDocBD, AppTipoDocDAO, AppfrmTipoDoc);
+        AppControlTipoDoc.IniciarTipoDoc();//Invoco el metodo para el form
+        AppfrmTipoDoc.setVisible(true);//Invoco el metodo
+        
+//        // TODO code application logic here
+//        RepuestoBD AppRepuestoBD = new RepuestoBD();//Instancio y creo un nuevo objeto
+//        RepuestoDAO AppRepuestoDAO = new RepuestoDAO();//Instancio y creo un nuevo objeto
+//        frmRepuesto AppfrmRepuesto = new frmRepuesto();//Instancio y creo un nuevo objeto
+//        //Instancio y creo un nuevo objeto y paso los anteriores como parametro
+//        ControladorRepuesto AppControlRepu = new ControladorRepuesto(AppRepuestoBD, AppRepuestoDAO, AppfrmRepuesto);
+//        AppControlRepu.IniciarRepuesto();//Invoco el metodo para el form
+//        AppfrmRepuesto.setVisible(true);//Invoco el metodo
         
 //        // TODO code application logic here
 //        TipoBD AppTipoBD = new TipoBD();//Instancio y creo un nuevo objeto
