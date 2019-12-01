@@ -11,12 +11,12 @@ import javax.swing.JFileChooser;
  *
  * @author Chris
  */
-public class frmCliente extends javax.swing.JFrame {
+public class frmMecanico extends javax.swing.JFrame {
 
     /**
      * Creates new form frmMarca
      */
-    public frmCliente() {
+    public frmMecanico() {
         initComponents();
     }
 
@@ -35,31 +35,23 @@ public class frmCliente extends javax.swing.JFrame {
         btgSexo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnValCliente = new javax.swing.JButton();
+        btnValEmple = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtNumDocCliente = new javax.swing.JTextField();
+        txtNumDocEmp = new javax.swing.JTextField();
         rdbEstA = new javax.swing.JRadioButton();
         rdbEstI = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txaObsCliente = new javax.swing.JTextArea();
+        txaObsEmp = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        txtNomCliente = new javax.swing.JTextField();
+        txtNomEmp = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtCodCliente = new javax.swing.JTextField();
+        txtCodEmpleado = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        cboDocCliente = new javax.swing.JComboBox<>();
+        cboDocEmp = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        txtApeCliente = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtDirCliente = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtTelCliente = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        txtMailCliente = new javax.swing.JTextField();
-        jftFecNac = new javax.swing.JFormattedTextField();
-        jLabel13 = new javax.swing.JLabel();
+        txtApeEmp = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cboCiuCliente = new javax.swing.JComboBox<>();
+        cboCiuEmp = new javax.swing.JComboBox<>();
         rdbSexM = new javax.swing.JRadioButton();
         rdbSexF = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
@@ -101,31 +93,31 @@ public class frmCliente extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Cod. Cliente");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 10, -1, -1));
+        jLabel1.setText("Cod. Mecanico");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        btnValCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnValCliente.setText(">>>");
-        btnValCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnValEmple.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnValEmple.setText(">>>");
+        btnValEmple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnValClienteActionPerformed(evt);
+                btnValEmpleActionPerformed(evt);
             }
         });
-        jPanel1.add(btnValCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 60, -1));
+        jPanel1.add(btnValEmple, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 60, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Documento");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 48, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        txtNumDocCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNumDocCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtNumDocCliente.setText("1030538949");
-        txtNumDocCliente.addActionListener(new java.awt.event.ActionListener() {
+        txtNumDocEmp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNumDocEmp.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNumDocEmp.setText("1030538949");
+        txtNumDocEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumDocClienteActionPerformed(evt);
+                txtNumDocEmpActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNumDocCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(461, 46, 100, -1));
+        jPanel1.add(txtNumDocEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 100, -1));
 
         rdbEstA.setBackground(new java.awt.Color(204, 204, 255));
         btgEst.add(rdbEstA);
@@ -136,138 +128,86 @@ public class frmCliente extends javax.swing.JFrame {
                 rdbEstAActionPerformed(evt);
             }
         });
-        jPanel1.add(rdbEstA, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 244, -1, 20));
+        jPanel1.add(rdbEstA, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, 20));
 
         rdbEstI.setBackground(new java.awt.Color(204, 204, 255));
         btgEst.add(rdbEstI);
         rdbEstI.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rdbEstI.setText("Inactivo");
-        jPanel1.add(rdbEstI, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 244, -1, 20));
+        jPanel1.add(rdbEstI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, 20));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
-        txaObsCliente.setColumns(20);
-        txaObsCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txaObsCliente.setRows(5);
-        txaObsCliente.setPreferredSize(new java.awt.Dimension(320, 104));
-        jScrollPane1.setViewportView(txaObsCliente);
+        txaObsEmp.setColumns(20);
+        txaObsEmp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txaObsEmp.setRows(5);
+        txaObsEmp.setPreferredSize(new java.awt.Dimension(320, 104));
+        jScrollPane1.setViewportView(txaObsEmp);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 283, 440, 50));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 440, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Observaciones");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 277, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
-        txtNomCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNomCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtNomCliente.setText("CHRISIAN CAMILO");
-        txtNomCliente.addActionListener(new java.awt.event.ActionListener() {
+        txtNomEmp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNomEmp.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNomEmp.setText("CHRISIAN CAMILO");
+        txtNomEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomClienteActionPerformed(evt);
+                txtNomEmpActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNomCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 83, 270, -1));
+        jPanel1.add(txtNomEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 87, 270, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Nombres");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 85, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 90, -1, -1));
 
-        txtCodCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCodCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCodCliente.setText("1030538949");
-        jPanel1.add(txtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 10, 100, -1));
+        txtCodEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCodEmpleado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCodEmpleado.setText("1030538949");
+        jPanel1.add(txtCodEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Num. Documento");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 49, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, -1));
 
-        cboDocCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cboDocCliente.addActionListener(new java.awt.event.ActionListener() {
+        cboDocEmp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cboDocEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboDocClienteActionPerformed(evt);
+                cboDocEmpActionPerformed(evt);
             }
         });
-        jPanel1.add(cboDocCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 45, 210, -1));
+        jPanel1.add(cboDocEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 210, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Apellidos");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 121, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 120, -1, -1));
 
-        txtApeCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtApeCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtApeCliente.setText("GUTIERREZ MONTOYA");
-        txtApeCliente.addActionListener(new java.awt.event.ActionListener() {
+        txtApeEmp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtApeEmp.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtApeEmp.setText("GUTIERREZ MONTOYA");
+        txtApeEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApeClienteActionPerformed(evt);
+                txtApeEmpActionPerformed(evt);
             }
         });
-        jPanel1.add(txtApeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 119, 270, -1));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Direccion");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 157, -1, -1));
-
-        txtDirCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDirCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtDirCliente.setText("CRA 81 I # 54C 14 SUR");
-        txtDirCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDirClienteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtDirCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 156, 200, -1));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("Nacimiento");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 194, -1, -1));
-
-        txtTelCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtTelCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtTelCliente.setText("3232140282");
-        txtTelCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelClienteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 156, 100, -1));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setText("E-mail");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 193, -1, -1));
-
-        txtMailCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMailCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtMailCliente.setText("chcgutierrezm@gmail.com");
-        txtMailCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMailClienteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtMailCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 192, 200, -1));
-
-        jftFecNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jftFecNac.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jftFecNac.setText("17/11/2019");
-        jftFecNac.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(jftFecNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 192, 100, -1));
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel13.setText("Telefono");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 160, -1, -1));
+        jPanel1.add(txtApeEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 270, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Ciudad");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
 
-        cboCiuCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cboCiuCliente.addActionListener(new java.awt.event.ActionListener() {
+        cboCiuEmp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cboCiuEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboCiuClienteActionPerformed(evt);
+                cboCiuEmpActionPerformed(evt);
             }
         });
-        jPanel1.add(cboCiuCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 238, 210, -1));
+        jPanel1.add(cboCiuEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 210, -1));
 
         rdbSexM.setBackground(new java.awt.Color(204, 204, 255));
         btgSexo.add(rdbSexM);
@@ -278,21 +218,21 @@ public class frmCliente extends javax.swing.JFrame {
                 rdbSexMActionPerformed(evt);
             }
         });
-        jPanel1.add(rdbSexM, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 107, -1, 20));
+        jPanel1.add(rdbSexM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, 20));
 
         rdbSexF.setBackground(new java.awt.Color(204, 204, 255));
         btgSexo.add(rdbSexF);
         rdbSexF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rdbSexF.setText("Femenino");
-        jPanel1.add(rdbSexF, new org.netbeans.lib.awtextra.AbsoluteConstraints(503, 107, -1, 20));
+        jPanel1.add(rdbSexF, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, 20));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sexo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 87, 198, 50));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 198, 50));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 225, 163, 50));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 163, 50));
 
         jToolBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jToolBar1.setFloatable(false);
@@ -386,15 +326,15 @@ public class frmCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
         );
 
         pack();
@@ -404,41 +344,29 @@ public class frmCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbEstAActionPerformed
 
-    private void txtNomClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomClienteActionPerformed
+    private void txtNomEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomEmpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomClienteActionPerformed
+    }//GEN-LAST:event_txtNomEmpActionPerformed
 
-    private void txtNumDocClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumDocClienteActionPerformed
+    private void txtNumDocEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumDocEmpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumDocClienteActionPerformed
+    }//GEN-LAST:event_txtNumDocEmpActionPerformed
 
-    private void btnValClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValClienteActionPerformed
+    private void btnValEmpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValEmpleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnValClienteActionPerformed
+    }//GEN-LAST:event_btnValEmpleActionPerformed
 
-    private void cboDocClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDocClienteActionPerformed
+    private void cboDocEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDocEmpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboDocClienteActionPerformed
+    }//GEN-LAST:event_cboDocEmpActionPerformed
 
-    private void txtApeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApeClienteActionPerformed
+    private void txtApeEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApeEmpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtApeClienteActionPerformed
+    }//GEN-LAST:event_txtApeEmpActionPerformed
 
-    private void txtDirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDirClienteActionPerformed
+    private void cboCiuEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCiuEmpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDirClienteActionPerformed
-
-    private void txtTelClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelClienteActionPerformed
-
-    private void txtMailClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMailClienteActionPerformed
-
-    private void cboCiuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCiuClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboCiuClienteActionPerformed
+    }//GEN-LAST:event_cboCiuEmpActionPerformed
 
     private void rdbSexMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbSexMActionPerformed
         // TODO add your handling code here:
@@ -461,14 +389,22 @@ public class frmCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMecanico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMecanico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMecanico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMecanico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -481,7 +417,7 @@ public class frmCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmCliente().setVisible(true);
+                new frmMecanico().setVisible(true);
             }
         });
     }
@@ -498,14 +434,10 @@ public class frmCliente extends javax.swing.JFrame {
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnImprimir;
     public javax.swing.JButton btnNuevo;
-    public javax.swing.JButton btnValCliente;
-    public javax.swing.JComboBox<String> cboCiuCliente;
-    public javax.swing.JComboBox<String> cboDocCliente;
+    public javax.swing.JButton btnValEmple;
+    public javax.swing.JComboBox<String> cboCiuEmp;
+    public javax.swing.JComboBox<String> cboDocEmp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
@@ -525,19 +457,15 @@ public class frmCliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     public javax.swing.JToolBar jToolBar1;
-    public javax.swing.JFormattedTextField jftFecNac;
     public javax.swing.JRadioButton rdbEstA;
     public javax.swing.JRadioButton rdbEstI;
     public javax.swing.JRadioButton rdbSexF;
     public javax.swing.JRadioButton rdbSexM;
-    public javax.swing.JTextArea txaObsCliente;
-    public javax.swing.JTextField txtApeCliente;
-    public javax.swing.JTextField txtCodCliente;
-    public javax.swing.JTextField txtDirCliente;
-    public javax.swing.JTextField txtMailCliente;
-    public javax.swing.JTextField txtNomCliente;
-    public javax.swing.JTextField txtNumDocCliente;
-    public javax.swing.JTextField txtTelCliente;
+    public javax.swing.JTextArea txaObsEmp;
+    public javax.swing.JTextField txtApeEmp;
+    public javax.swing.JTextField txtCodEmpleado;
+    public javax.swing.JTextField txtNomEmp;
+    public javax.swing.JTextField txtNumDocEmp;
     // End of variables declaration//GEN-END:variables
 
 }

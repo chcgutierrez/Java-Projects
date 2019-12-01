@@ -6,7 +6,6 @@
 package modelo;
 
 import java.sql.*;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
@@ -53,8 +52,8 @@ public class ClienteDAO extends ConectaBD {
         try {
             //Invoca el SP y pasa los parametros
             CallableStatement Editar = reuConex.prepareCall("CALL SP_EDITAR_CLIENTE(?,?,?,?,?,?,?,?,?,?,?,?)");
-            Editar.setString(1, objCliente.getTipdoCliente());
-            Editar.setString(2, objCliente.getNumdoCliente());
+            Editar.setString(1, objCliente.getNumdoCliente());
+            Editar.setString(2, objCliente.getTipdoCliente());            
             Editar.setString(3, objCliente.getNomCliente());
             Editar.setString(4, objCliente.getApeCliente());
             Editar.setString(5, objCliente.getSexCliente());
@@ -127,7 +126,7 @@ public class ClienteDAO extends ConectaBD {
             rslSet = Busqueda.executeQuery();
             while (rslSet.next()) {//Pone el valor en cada campo del arreglo
                 datosBusq[0] = rslSet.getString("num_doc_cliente");
-                datosBusq[1] = rslSet.getString("nom_cliente");
+                datosBusq[1] = rslSet.getString("nCliente"); //Alias del concatenado en BD
                 datosBusq[2] = rslSet.getString("tel_cliente");
                 modBusqCliente.addRow(datosBusq);//Agrega las filas al modelo
             }
@@ -138,8 +137,8 @@ public class ClienteDAO extends ConectaBD {
         return modBusqCliente;//Devuelve el modelo con los datos
     }
 
-    //Llenar combo Tipo Docum 
-    public boolean CargaTipoDoc(JComboBox cboTipoDoc) {//Recibe objeto tipo CiudadBD
+    //Llenar combo Tipo Docum 7
+    public void CargaTipoDoc(JComboBox cboTipoDoc) {//Recibe objeto tipo CiudadBD
         Connection reuConex = conectarDB();//Variable de tipo connection
         ResultSet rslSet = null;
         try {
@@ -148,19 +147,15 @@ public class ClienteDAO extends ConectaBD {
             rslSet = Combo.executeQuery();
             cboTipoDoc.addItem("    - Seleccione -    ");
             while (rslSet.next()) {
-                cboTipoDoc.addItem(rslSet.getString("tipo_doc"));
                 cboTipoDoc.addItem(rslSet.getString("desc_tipodoc"));
-                return true;//Si todo está OK retorna true
             }
-            return false;//Si no hay datos
         } catch (SQLException e) {//Captura el error
             e.printStackTrace();//Muestra el error
-            return false;//Retorna false xq algo salió mal
         }
     }
 
     //Llenar combo Ciudad
-    public boolean CargaCiudad(JComboBox cboCiudad) {//Recibe objeto tipo CiudadBD
+    public void CargaCiudad(JComboBox cboCiudad) {//Recibe objeto tipo CiudadBD
         Connection reuConex = conectarDB();//Variable de tipo connection
         ResultSet rslSet = null;
         try {
@@ -169,14 +164,10 @@ public class ClienteDAO extends ConectaBD {
             rslSet = Combo.executeQuery();
             cboCiudad.addItem("    - Seleccione -    ");
             while (rslSet.next()) {
-                cboCiudad.addItem(rslSet.getString("idCiudad"));
                 cboCiudad.addItem(rslSet.getString("nom_ciudad"));
-                return true;//Si todo está OK retorna true
             }
-            return false;//Si no hay datos
         } catch (SQLException e) {//Captura el error
             e.printStackTrace();//Muestra el error
-            return false;//Retorna false xq algo salió mal
         }
     }
 

@@ -122,6 +122,22 @@ CREATE PROCEDURE SP_CBO_TIPODOC()
 
 CALL SP_CBO_TIPODOC();
 
+#Hacer un ALTER en SP
+
+USE `sysautos`;
+DROP procedure IF EXISTS `SP_CBO_TIPODOC`;
+
+DELIMITER $$
+USE `sysautos`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CBO_TIPODOC`()
+	SELECT
+		idTipoDoc,
+        desc_tipodoc
+	FROM tb_tipo_doc WHERE estado_tipodoc='A';$$
+
+DELIMITER ;
+
+
 
 
 
