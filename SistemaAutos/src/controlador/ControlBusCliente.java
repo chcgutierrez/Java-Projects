@@ -96,7 +96,6 @@ public class ControlBusCliente implements ActionListener {
 
     public void BusqOK() {
         int filaSel;
-
         try {
             filaSel = frmClienteBus.jtbCliente.getSelectedRow();
             if (filaSel == -1) {
@@ -105,10 +104,17 @@ public class ControlBusCliente implements ActionListener {
             } else {
                 DefaultTableModel modTabla = (DefaultTableModel) frmClienteBus.jtbCliente.getModel();
                 String codigo = modTabla.getValueAt(filaSel, 0).toString();
+                String nomCliente = modTabla.getValueAt(filaSel, 1).toString();
                 frmClienteBus.dispose();
-                ControladorCliente.frmClienteControl.txtCodCliente.setText(codigo);
-                if (String.valueOf(ControladorCliente.frmClienteControl.txtCodCliente.getText()) != "") {
-                    ControladorCliente.frmClienteControl.btnValCliente.doClick();
+                //
+                if (ControladorCarro.strFrmCarro == "S") {
+                    ControladorCarro.frmCarroControl.txtCodCliente.setText(codigo);
+                    ControladorCarro.frmCarroControl.txtNomCliCarro.setText(nomCliente);
+                } else {
+                    ControladorCliente.frmClienteControl.txtCodCliente.setText(codigo);
+                    if (String.valueOf(ControladorCliente.frmClienteControl.txtCodCliente.getText()) != "") {
+                        ControladorCliente.frmClienteControl.btnValCliente.doClick();
+                    }
                 }
             }
         } catch (HeadlessException ex) {

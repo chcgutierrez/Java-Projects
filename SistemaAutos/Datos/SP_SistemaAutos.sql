@@ -16,7 +16,11 @@ CREATE PROCEDURE SP_GUARDAR_MARCA(
     INSERT INTO tb_marca(cod_marca, nom_marca, estado_marca, fec_act, obs_marca)
 		VALUES(codMarca, nomMarca, estMarca, NOW(), obsMarca);
 
-CALL SP_GUARDAR_MARCA ('2001','CHEROLET','A','PRUEBA_MYSQL');
+CALL SP_GUARDAR_MARCA ('2002','RENAULT','A','PRUEBA_MYSQL');
+CALL SP_GUARDAR_MARCA ('2003','FORD','A','PRUEBA_MYSQL');
+CALL SP_GUARDAR_MARCA ('2004','PEUGEOT','A','PRUEBA_MYSQL');
+CALL SP_GUARDAR_MARCA ('2005','MAZDA','A','PRUEBA_MYSQL');
+
 
 /*
 ================================================================================
@@ -99,6 +103,24 @@ CREATE PROCEDURE SP_BUSQ_MARCA(
 	FROM tb_marca WHERE estado_marca='A' AND nom_marca LIKE CONCAT('%', nomMarca, '%');
 
 CALL SP_BUSQ_MARCA('H');
+
+/*
+================================================================================
+Procedimiento: SP_CBO_MARCA
+Objetivo: Llenar jComboBox con datos de la tabla tb_marca
+Autor: @chcgutierrez
+Fecha: 06/11/2019
+================================================================================
+*/
+
+CREATE PROCEDURE SP_CBO_MARCA() 
+    SELECT
+		idMarca,
+        nom_marca
+	FROM tb_marca WHERE estado_marca='A';
+
+
+
 
 
 

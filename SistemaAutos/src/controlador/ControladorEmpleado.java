@@ -333,7 +333,7 @@ public class ControladorEmpleado implements ActionListener {
 //        jfcVentana.setFileFilter(jfcArcFiltro);
     }
 
-    public void LimpiarRepuesto() {//Metodo para limpiar los controles
+    public void LimpiarEmpleado() {//Metodo para limpiar los controles
         frmEmpleControl.txtCodEmpleado.setText("");
         frmEmpleControl.cboDocEmp.setSelectedIndex(0);
         frmEmpleControl.txtNumDocEmp.setText("");

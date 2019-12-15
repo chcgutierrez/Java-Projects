@@ -116,7 +116,7 @@ Fecha: 06/11/2019
 
 CREATE PROCEDURE SP_CBO_TIPODOC() 
     SELECT
-		tipo_doc,
+		idTipoDoc,
         desc_tipodoc
 	FROM tb_tipo_doc WHERE estado_tipodoc='A';
 

@@ -114,6 +114,29 @@ CALL SP_BUSQ_CLIENTE('ANA');
 
 select * from tb_cliente;
 
+/*
+================================================================================
+Procedimiento: SP_BUSCAR_CLIENTECARRO
+Objetivo: Buscar datos en la tabla tb_vehiculo segun criterio
+Autor: @chcgutierrez
+Fecha: 13/11/2019
+================================================================================
+*/
+
+SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+CREATE PROCEDURE SP_BUSCAR_CLIENTECARRO(
+	codCliente VARCHAR(15))
+    
+    SELECT
+        num_doc_cliente,
+        CONCAT(nom_cliente, ' ', ape_cliente) AS carCliente
+	FROM tb_cliente WHERE estado_cliente = 'A' AND num_doc_cliente = codCliente;
+    
+SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+CALL SP_BUSCAR_CLIENTECARRO('12345')
+
 /************************************************************************************************************************************/
 
 

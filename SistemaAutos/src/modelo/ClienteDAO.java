@@ -53,7 +53,7 @@ public class ClienteDAO extends ConectaBD {
             //Invoca el SP y pasa los parametros
             CallableStatement Editar = reuConex.prepareCall("CALL SP_EDITAR_CLIENTE(?,?,?,?,?,?,?,?,?,?,?,?)");
             Editar.setString(1, objCliente.getNumdoCliente());
-            Editar.setString(2, objCliente.getTipdoCliente());            
+            Editar.setString(2, objCliente.getTipdoCliente());
             Editar.setString(3, objCliente.getNomCliente());
             Editar.setString(4, objCliente.getApeCliente());
             Editar.setString(5, objCliente.getSexCliente());
@@ -168,6 +168,27 @@ public class ClienteDAO extends ConectaBD {
             }
         } catch (SQLException e) {//Captura el error
             e.printStackTrace();//Muestra el error
+        }
+    }
+
+    //Metodo Cliente - Carro
+    public boolean ClienteCarro(ClienteBD objCliente) {//Recibe objeto tipo CiudadBD
+
+        Connection reuConex = conectarDB();//Variable de tipo connection
+        ResultSet rslSet = null;
+        try {
+            //Invoca el SP y pasa los parametros
+            CallableStatement cliCarro = reuConex.prepareCall("CALL SP_BUSCAR_CLIENTECARRO(?)");
+            cliCarro.setString(1, objCliente.getNumdoCliente());
+            rslSet = cliCarro.executeQuery();
+            if (rslSet.next()) {
+                objCliente.setNomCliente(rslSet.getString("carCliente"));
+                return true;//Si todo está OK retorna true
+            }
+            return false;//Si no hay datos
+        } catch (SQLException e) {//Captura el error
+            e.printStackTrace();//Muestra el error
+            return false;//Retorna false xq algo salió mal
         }
     }
 

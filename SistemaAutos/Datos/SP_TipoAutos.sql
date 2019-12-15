@@ -104,6 +104,23 @@ CALL SP_BUSQ_TIPO('U');
 
 select * from tb_tipo;
 
+/*
+================================================================================
+Procedimiento: SP_CBO_TIPO
+Objetivo: Llenar jComboBox con datos de la tabla tb_tipo
+Autor: @chcgutierrez
+Fecha: 06/11/2019
+================================================================================
+*/
+
+CREATE PROCEDURE SP_CBO_TIPO() 
+    SELECT
+		idTipo,
+        nom_tipo
+	FROM tb_tipo WHERE estado_tipo='A';
+
+CALL SP_CBO_TIPO();
+
 
 
 

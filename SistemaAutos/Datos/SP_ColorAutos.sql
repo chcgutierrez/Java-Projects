@@ -103,6 +103,23 @@ CALL SP_BUSQ_COLOR('R');
 
 select * from tb_color;
 
+/*
+================================================================================
+Procedimiento: SP_CBO_COLOR
+Objetivo: Llenar jComboBox con datos de la tabla tb_color
+Autor: @chcgutierrez
+Fecha: 06/11/2019
+================================================================================
+*/
+
+CREATE PROCEDURE SP_CBO_COLOR() 
+    SELECT
+		idColor,
+        nom_color
+	FROM tb_color WHERE estado_color='A';
+
+CALL SP_CBO_COLOR();
+
 
 
 

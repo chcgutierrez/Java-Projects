@@ -35,29 +35,29 @@ public class frmVehiculo extends javax.swing.JFrame {
         btgSexo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnValCliente = new javax.swing.JButton();
+        btnValCarro = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         rdbEstA = new javax.swing.JRadioButton();
         rdbEstI = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txaObsCliente = new javax.swing.JTextArea();
+        txaObsCarro = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        txtNomCliente = new javax.swing.JTextField();
+        txtModCarro = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        cboDocCliente = new javax.swing.JComboBox<>();
+        cboMarcaCarro = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        txtApeCliente = new javax.swing.JTextField();
+        txtMotorCarro = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtDirCliente = new javax.swing.JTextField();
-        txtTelCliente = new javax.swing.JTextField();
+        txtCodCliente = new javax.swing.JTextField();
+        txtNomCliCarro = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cboCiuCliente = new javax.swing.JComboBox<>();
+        cboCiuCarro = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        txtPlaca = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        cboDocCliente1 = new javax.swing.JComboBox<>();
+        cboTipoCarro = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        cboDocCliente2 = new javax.swing.JComboBox<>();
+        cboColorCarro = new javax.swing.JComboBox<>();
         jToolBar1 = new javax.swing.JToolBar();
         btnNuevo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -98,14 +98,14 @@ public class frmVehiculo extends javax.swing.JFrame {
         jLabel1.setText("Placa");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 10, -1, -1));
 
-        btnValCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnValCliente.setText(">>>");
-        btnValCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnValCarro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnValCarro.setText(">>>");
+        btnValCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnValClienteActionPerformed(evt);
+                btnValCarroActionPerformed(evt);
             }
         });
-        jPanel1.add(btnValCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 60, -1));
+        jPanel1.add(btnValCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 60, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Marca");
@@ -132,11 +132,11 @@ public class frmVehiculo extends javax.swing.JFrame {
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
-        txaObsCliente.setColumns(20);
-        txaObsCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txaObsCliente.setRows(5);
-        txaObsCliente.setPreferredSize(new java.awt.Dimension(320, 104));
-        jScrollPane1.setViewportView(txaObsCliente);
+        txaObsCarro.setColumns(20);
+        txaObsCarro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txaObsCarro.setRows(5);
+        txaObsCarro.setPreferredSize(new java.awt.Dimension(320, 104));
+        jScrollPane1.setViewportView(txaObsCarro);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 263, 480, 50));
 
@@ -144,111 +144,105 @@ public class frmVehiculo extends javax.swing.JFrame {
         jLabel5.setText("Observaciones");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
-        txtNomCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNomCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNomCliente.setText("1987");
-        txtNomCliente.addActionListener(new java.awt.event.ActionListener() {
+        txtModCarro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtModCarro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtModCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomClienteActionPerformed(evt);
+                txtModCarroActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNomCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 83, 60, -1));
+        jPanel1.add(txtModCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 83, 60, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Modelo");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 85, -1, -1));
 
-        cboDocCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cboDocCliente.addActionListener(new java.awt.event.ActionListener() {
+        cboMarcaCarro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cboMarcaCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboDocClienteActionPerformed(evt);
+                cboMarcaCarroActionPerformed(evt);
             }
         });
-        jPanel1.add(cboDocCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 45, 180, -1));
+        jPanel1.add(cboMarcaCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 45, 180, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Motor");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 85, -1, -1));
 
-        txtApeCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtApeCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtApeCliente.setText("2JU98ADS-9R");
-        txtApeCliente.addActionListener(new java.awt.event.ActionListener() {
+        txtMotorCarro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMotorCarro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMotorCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApeClienteActionPerformed(evt);
+                txtMotorCarroActionPerformed(evt);
             }
         });
-        jPanel1.add(txtApeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 83, 120, -1));
+        jPanel1.add(txtMotorCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 83, 120, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Propietario");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 175, -1, -1));
 
-        txtDirCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDirCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDirCliente.setText("1030538949");
-        txtDirCliente.addActionListener(new java.awt.event.ActionListener() {
+        txtCodCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCodCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCodCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDirClienteActionPerformed(evt);
+                txtCodClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDirCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 173, 100, -1));
+        jPanel1.add(txtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 173, 100, -1));
 
-        txtTelCliente.setBackground(new java.awt.Color(204, 204, 204));
-        txtTelCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtTelCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtTelCliente.setText("CHRISTIAN CAMILO GUTIERREZ MONTOYA");
-        txtTelCliente.addActionListener(new java.awt.event.ActionListener() {
+        txtNomCliCarro.setBackground(new java.awt.Color(204, 204, 204));
+        txtNomCliCarro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNomCliCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelClienteActionPerformed(evt);
+                txtNomCliCarroActionPerformed(evt);
             }
         });
-        jPanel1.add(txtTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 173, 300, -1));
+        jPanel1.add(txtNomCliCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 173, 300, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Ciudad");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 210, -1, -1));
 
-        cboCiuCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cboCiuCliente.addActionListener(new java.awt.event.ActionListener() {
+        cboCiuCarro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cboCiuCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboCiuClienteActionPerformed(evt);
+                cboCiuCarroActionPerformed(evt);
             }
         });
-        jPanel1.add(cboCiuCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 207, 210, -1));
+        jPanel1.add(cboCiuCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 207, 210, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 115, 163, 50));
 
-        jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jFormattedTextField1.setText("SFB - 594");
-        jFormattedTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 90, -1));
+        txtPlaca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPlaca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 90, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Tipo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 50, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 49, -1, -1));
 
-        cboDocCliente1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cboDocCliente1.addActionListener(new java.awt.event.ActionListener() {
+        cboTipoCarro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cboTipoCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboDocCliente1ActionPerformed(evt);
+                cboTipoCarroActionPerformed(evt);
             }
         });
-        jPanel1.add(cboDocCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 45, 180, -1));
+        jPanel1.add(cboTipoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 45, 180, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Color");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 130, -1, -1));
 
-        cboDocCliente2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cboDocCliente2.addActionListener(new java.awt.event.ActionListener() {
+        cboColorCarro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cboColorCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboDocCliente2ActionPerformed(evt);
+                cboColorCarroActionPerformed(evt);
             }
         });
-        jPanel1.add(cboDocCliente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 127, 180, -1));
+        jPanel1.add(cboColorCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 127, 180, -1));
 
         jToolBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jToolBar1.setFloatable(false);
@@ -360,41 +354,41 @@ public class frmVehiculo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbEstAActionPerformed
 
-    private void txtNomClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomClienteActionPerformed
+    private void txtModCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModCarroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomClienteActionPerformed
+    }//GEN-LAST:event_txtModCarroActionPerformed
 
-    private void btnValClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValClienteActionPerformed
+    private void btnValCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValCarroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnValClienteActionPerformed
+    }//GEN-LAST:event_btnValCarroActionPerformed
 
-    private void cboDocClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDocClienteActionPerformed
+    private void cboMarcaCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaCarroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboDocClienteActionPerformed
+    }//GEN-LAST:event_cboMarcaCarroActionPerformed
 
-    private void txtApeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApeClienteActionPerformed
+    private void txtMotorCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMotorCarroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtApeClienteActionPerformed
+    }//GEN-LAST:event_txtMotorCarroActionPerformed
 
-    private void txtDirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDirClienteActionPerformed
+    private void txtCodClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDirClienteActionPerformed
+    }//GEN-LAST:event_txtCodClienteActionPerformed
 
-    private void txtTelClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelClienteActionPerformed
+    private void cboCiuCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCiuCarroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelClienteActionPerformed
+    }//GEN-LAST:event_cboCiuCarroActionPerformed
 
-    private void cboCiuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCiuClienteActionPerformed
+    private void cboTipoCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTipoCarroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboCiuClienteActionPerformed
+    }//GEN-LAST:event_cboTipoCarroActionPerformed
 
-    private void cboDocCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDocCliente1ActionPerformed
+    private void cboColorCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboColorCarroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboDocCliente1ActionPerformed
+    }//GEN-LAST:event_cboColorCarroActionPerformed
 
-    private void cboDocCliente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDocCliente2ActionPerformed
+    private void txtNomCliCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomCliCarroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboDocCliente2ActionPerformed
+    }//GEN-LAST:event_txtNomCliCarroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,12 +452,11 @@ public class frmVehiculo extends javax.swing.JFrame {
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnImprimir;
     public javax.swing.JButton btnNuevo;
-    public javax.swing.JButton btnValCliente;
-    public javax.swing.JComboBox<String> cboCiuCliente;
-    public javax.swing.JComboBox<String> cboDocCliente;
-    public javax.swing.JComboBox<String> cboDocCliente1;
-    public javax.swing.JComboBox<String> cboDocCliente2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    public javax.swing.JButton btnValCarro;
+    public javax.swing.JComboBox<String> cboCiuCarro;
+    public javax.swing.JComboBox<String> cboColorCarro;
+    public javax.swing.JComboBox<String> cboMarcaCarro;
+    public javax.swing.JComboBox<String> cboTipoCarro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel16;
@@ -487,11 +480,12 @@ public class frmVehiculo extends javax.swing.JFrame {
     public javax.swing.JToolBar jToolBar1;
     public javax.swing.JRadioButton rdbEstA;
     public javax.swing.JRadioButton rdbEstI;
-    public javax.swing.JTextArea txaObsCliente;
-    public javax.swing.JTextField txtApeCliente;
-    public javax.swing.JTextField txtDirCliente;
-    public javax.swing.JTextField txtNomCliente;
-    public javax.swing.JTextField txtTelCliente;
+    public javax.swing.JTextArea txaObsCarro;
+    public javax.swing.JTextField txtCodCliente;
+    public javax.swing.JTextField txtModCarro;
+    public javax.swing.JTextField txtMotorCarro;
+    public javax.swing.JTextField txtNomCliCarro;
+    public javax.swing.JFormattedTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 
 }
