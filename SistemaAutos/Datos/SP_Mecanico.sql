@@ -90,12 +90,36 @@ Fecha: 13/11/2019
 CREATE PROCEDURE SP_BUSQ_EMPLE(
 	nomEmple VARCHAR(150)) 
     SELECT
+        
 		num_doc_mecanico,
 		CONCAT(nom_mecanico, ' ', ape_mecanico) AS nEmpleado
 	FROM tb_mecanico WHERE nom_mecanico LIKE CONCAT('%', nomEmple, '%');
 
 CALL SP_BUSQ_EMPLE('JAV');
 
+/*
+================================================================================
+Procedimiento: SP_BUSCAR_CLIENTECARRO
+Objetivo: Buscar datos en la tabla tb_vehiculo segun criterio
+Autor: @chcgutierrez
+Fecha: 13/11/2019
+================================================================================
+*/
+
+SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+CREATE PROCEDURE SP_BUSCAR_MECAN_CARRO(
+	codMecan VARCHAR(15))
+    
+    SELECT
+		idMecanico,
+        num_doc_mecanico,
+        CONCAT(nom_mecanico, ' ', ape_mecanico) AS carMecanico
+	FROM tb_mecanico WHERE estado_mecanico = 'A' AND num_doc_mecanico = codMecan;
+    
+SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+SELECT * FROM tb_mecanico;
 
 
 

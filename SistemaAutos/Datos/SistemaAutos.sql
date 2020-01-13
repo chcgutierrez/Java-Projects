@@ -176,14 +176,14 @@ CREATE TABLE IF NOT EXISTS `SysAutos`.`tb_mecanico` (
     ON UPDATE NO ACTION) AUTO_INCREMENT=80001
 ENGINE = InnoDB;
 
-
+drop table tb_orden_trabajo;
 -- -----------------------------------------------------
 -- Table `SysAutos`.`tb_orden_trabajo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SysAutos`.`tb_orden_trabajo` (
   `idOrden` INT NOT NULL AUTO_INCREMENT,
   `fec_orden` DATETIME NOT NULL,
-  `id_cliente` INT NOT NULL,
+  `id_cliente` VARCHAR(30) NOT NULL,
   `id_mecanico` INT NOT NULL,
   `cod_vehiculo` INT NOT NULL,
   `valor_orden` DECIMAL(18,2) NOT NULL,
@@ -196,6 +196,11 @@ CREATE TABLE IF NOT EXISTS `SysAutos`.`tb_orden_trabajo` (
   CONSTRAINT `fk_orden_mecanico`
     FOREIGN KEY (`id_mecanico`)
     REFERENCES `SysAutos`.`tb_mecanico` (`idMecanico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_orden_cliente`
+    FOREIGN KEY (`id_cliente`)
+    REFERENCES `SysAutos`.`tb_cliente` (`num_doc_cliente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_orden_vehiculo`

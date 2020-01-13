@@ -14,7 +14,7 @@ import java.io.*;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.Collections;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.*;
@@ -22,6 +22,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import modelo.*;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -62,28 +64,30 @@ public class ControladorCarro implements ActionListener {
         this.frmCarroControl.btnValCarro.addActionListener(this);
 
         //Busca el cliente al tabular el código
-        this.frmCarroControl.txtCodCliente.addFocusListener(new FocusAdapter() {
+        if (frmCarroControl.txtCodCliente.getText().length() > 0) {
+            this.frmCarroControl.txtCodCliente.addFocusListener(new FocusAdapter() {
 
-            public void focusLost(FocusEvent e) {
-                //textField1_focusGained(e);
-                Icon Vacio = new ImageIcon(getClass().getResource("/img/icons8_close_window_32px.png"));
-                reuCarroBD.setClienteCarro(frmCarroControl.txtCodCliente.getText());
-                try {
-                    //
-                    if (reuCarroDAO.ClienteCarro(reuCarroBD)) {
-                        frmCarroControl.txtNomCliCarro.setText(String.valueOf(reuCarroBD.getNomCliCarro()));
+                public void focusLost(FocusEvent e) {
+                    //textField1_focusGained(e);
+                    Icon Vacio = new ImageIcon(getClass().getResource("/img/icons8_close_window_32px.png"));
+                    reuCarroBD.setClienteCarro(frmCarroControl.txtCodCliente.getText());
+                    try {
+                        //
+                        if (reuCarroDAO.ClienteCarro(reuCarroBD)) {
+                            frmCarroControl.txtNomCliCarro.setText(String.valueOf(reuCarroBD.getNomCliCarro()));
 
-                    } else {
-                        frmCarroControl.txtNomCliCarro.setText("");
-                        JOptionPane.showMessageDialog(frmCarroControl, "El cliente no existe o está inactivo", "Cliente - MVC", JOptionPane.ERROR_MESSAGE, Vacio);
+                        } else {
+                            frmCarroControl.txtNomCliCarro.setText("");
+                            JOptionPane.showMessageDialog(frmCarroControl, "El cliente no existe o está inactivo", "Cliente - MVC", JOptionPane.ERROR_MESSAGE, Vacio);
+                        }
+                        //
+                    } catch (HeadlessException hexc) {
+                        hexc.printStackTrace();
                     }
-                    //
-                } catch (HeadlessException hexc) {
-                    hexc.printStackTrace();
                 }
             }
+            );
         }
-        );
 
         //Abre buscador con Doble Click
         this.frmCarroControl.txtCodCliente.addMouseListener(new MouseAdapter() {
@@ -288,7 +292,7 @@ public class ControladorCarro implements ActionListener {
         }
     }
 
-    public void IniciarCarro() {//Metodo para iniciar el form
+    public void IniciarCarro() throws ParseException {//Metodo para iniciar el form
         //Poner icono al form
         ImageIcon formaIcon = new ImageIcon(getClass().getResource("/img/icons8_services_48px.png"));
         Image Image = formaIcon.getImage();
@@ -302,6 +306,7 @@ public class ControladorCarro implements ActionListener {
         reuCarroDAO.CargaTipo(frmCarroControl.cboTipoCarro); //Cargo Combo Tipo
         reuCarroDAO.CargaColor(frmCarroControl.cboColorCarro); //Cargo Combo Color
         reuCarroDAO.CargaCiudad(frmCarroControl.cboCiuCarro); //Cargo Combo Ciudad
+        frmCarroControl.txtPlaca.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("UUU - AAA")));
         //Menú inicial
         MenuNuevo();
     }

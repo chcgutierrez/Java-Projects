@@ -159,4 +159,26 @@ public class EmpleadoDAO extends ConectaBD {
             e.printStackTrace();//Muestra el error
         }
     }
+    
+    //Metodo Empleado - Orden
+    public boolean mecaOrden(EmpleadoBD objEmple) {//Recibe objeto tipo CiudadBD
+
+        Connection reuConex = conectarDB();//Variable de tipo connection
+        ResultSet rslSet = null;
+        try {
+            //Invoca el SP y pasa los parametros
+            CallableStatement empleCarro = reuConex.prepareCall("CALL SP_BUSCAR_MECAN_CARRO(?)");
+            empleCarro.setString(1, objEmple.getNumdoEmple());
+            rslSet = empleCarro.executeQuery();
+            if (rslSet.next()) {
+                objEmple.setCodEmple(rslSet.getString("idMecanico"));
+                objEmple.setNomEmple(rslSet.getString("carMecanico"));
+                return true;//Si todo está OK retorna true
+            }
+            return false;//Si no hay datos
+        } catch (SQLException e) {//Captura el error
+            e.printStackTrace();//Muestra el error
+            return false;//Retorna false xq algo salió mal
+        }
+    }
 }

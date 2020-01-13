@@ -1,4 +1,4 @@
-SELECT * FROM tb_cliente;
+SELECT * FROM tb_repuesto;
 
 /*
 ================================================================================
@@ -80,14 +80,14 @@ Fecha: 13/11/2019
 SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 
 CREATE PROCEDURE SP_BUSCAR_CARRO(
-	placaVehi VARCHAR(15))
-    
-    SELECT
-        A.placa_vehiculo, A.num_motor,
+    placaVehi VARCHAR(15))
+SELECT
+        A.placa_vehiculo, A.ciudad_vehiculo, A.marca_vehiculo, A.tipo_vehiculo, A.color_vehiculo, A.modelo_vehiculo,
+        A.num_motor, A.estado_vehiculo, A.fec_act, A.obs_vehiculo,
         B.num_doc_cliente, CONCAT(B.nom_cliente, ' ', B.ape_cliente) AS nomCliente
 	FROM tb_vehiculo AS A INNER JOIN tb_cliente AS B
 		ON B.num_doc_cliente = A.cod_cliente
-    WHERE A.placa_vehiculo LIKE CONCAT('%', placaVehi, '%')
+    WHERE A.placa_vehiculo = placaVehi
     
 SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
                         
@@ -107,9 +107,9 @@ CREATE PROCEDURE SP_BUSQ_CARRO(
     
     SELECT
         A.placa_vehiculo, A.num_motor,
-        B.num_doc_cliente, CONCAT(B.nom_cliente, ' ', B.ape_cliente) AS Cliente
+        B.num_doc_cliente, CONCAT(B.nom_cliente, ' ', B.ape_cliente) AS nomCliente
 	FROM tb_vehiculo AS A INNER JOIN tb_cliente AS B
-		ON B.id_cliente = A.cliente
+		ON B.num_doc_cliente = A.cod_cliente
     WHERE A.placa_vehiculo LIKE CONCAT('%', placaVehi, '%');
 
 CALL SP_BUSQ_CARRO('ADU');

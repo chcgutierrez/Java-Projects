@@ -155,4 +155,28 @@ public class RepuestoDAO extends ConectaBD { //La clase hereda de la Conexion a 
         }
         return modBusqRepto;//Devuelve el modelo con los datos
     }
+    
+    //Metodo Orden - Repuesto
+    public boolean repuOrden(RepuestoBD objRepu) {//Recibe objeto tipo CiudadBD
+
+        Connection reuConex = conectarDB();//Variable de tipo connection
+        ResultSet rslSet = null;
+        try {
+            //Invoca el SP y pasa los parametros
+            CallableStatement repuCarro = reuConex.prepareCall("CALL SP_BUSCAR_REPU_CARRO(?)");
+            repuCarro.setString(1, objRepu.getCodRepto());
+            rslSet = repuCarro.executeQuery();
+            if (rslSet.next()) {
+                objRepu.setIdRepto(rslSet.getString("idRepuestos"));
+                objRepu.setDesRepto(rslSet.getString("desc_repu"));
+                objRepu.setTipoRepto(rslSet.getString("tipo_repu"));
+                objRepu.setCantRepto(rslSet.getString("cant_repu"));
+                return true;//Si todo está OK retorna true
+            }
+            return false;//Si no hay datos
+        } catch (SQLException e) {//Captura el error
+            e.printStackTrace();//Muestra el error
+            return false;//Retorna false xq algo salió mal
+        }
+    }
 }

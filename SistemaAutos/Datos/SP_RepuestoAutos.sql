@@ -105,9 +105,33 @@ CREATE PROCEDURE SP_BUSQ_REPTO(
 	FROM tb_repuesto WHERE est_repuesto='A' AND nom_repu LIKE CONCAT('%', nomRepto, '%');
     
 CALL SP_BUSQ_REPTO ('N');
+
+/*
+================================================================================
+Procedimiento: SP_BUSCAR_REPU_CARRO
+Objetivo: Busca el repuesto con el código y el estado activo
+Autor: @chcgutierrez
+Fecha: 04/01/2020
+================================================================================
+*/
+
+SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+CREATE PROCEDURE SP_BUSCAR_REPU_CARRO(
+	codRepu VARCHAR(20))
     
+    SELECT
+		idRepuestos,
+        tipo_repu,
+        desc_repu,
+        cant_repu
+	FROM tb_repuesto WHERE est_repuesto = 'A' AND cod_repu = codRepu;
     
+SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
     
+select * from tb_repuesto;    
+
+CALL SP_BUSCAR_REPU_CARRO('6003');    
     
     
     

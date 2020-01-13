@@ -10,7 +10,8 @@ package modelo;
  * @author Chris
  */
 public class RepuestoBD {
-
+    
+    private String idRepto;
     private String codRepto;
     private String tipoRepto;
     private String nomRepto;
@@ -20,6 +21,14 @@ public class RepuestoBD {
     private String fecRepto;
     private String obsRepto;
 
+    public String getIdRepto() {
+        return idRepto;
+    }
+
+    public void setIdRepto(String idRepto) {
+        this.idRepto = idRepto;
+    }
+    
     public String getCodRepto() {
         return codRepto;
     }
