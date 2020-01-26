@@ -90,38 +90,30 @@ END //
 
 /*
 ================================================================================
-Procedimiento: SP_VALIDAR_ORDEN
+Procedimiento: SP_BUSCAR_CARRO
 Objetivo: Buscar datos en la tabla tb_vehiculo segun criterio
 Autor: @chcgutierrez
 Fecha: 13/11/2019
 ================================================================================
 */
 
-SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
-
-CREATE PROCEDURE SP_VALIDAR_ORDEN(
+CREATE PROCEDURE SP_BUSCAR_CARRO_ORDEN(
     placaVehi VARCHAR(15))
     
 	SELECT
-		B.num_doc_cliente,
-        CONCAT(B.nom_cliente, ' ', B.ape_cliente) AS nomCliente,
-        B.tel_cliente,
-        A.marca_vehiculo,
-        A.num_motor,
-        A.modelo_vehiculo,
-        
-        A.placa_vehiculo, A.ciudad_vehiculo,  A.tipo_vehiculo, A.color_vehiculo, 
-         A.estado_vehiculo, A.fec_act, A.obs_vehiculo,
-        
-	FROM tb_vehiculo AS A INNER JOIN tb_cliente AS B
+		CONCAT(B.nom_cliente, ' ', B.ape_cliente) AS nomCliente,
+		B.tel_cliente,
+		C.nom_marca,
+		A.num_motor,
+		A.modelo_vehiculo        
+	FROM tb_vehiculo AS A
+    INNER JOIN tb_cliente AS B
 		ON B.num_doc_cliente = A.cod_cliente
-    WHERE A.placa_vehiculo = 'ADU - 361'
-
-select * from tb_cliente;
-    
-SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+	INNER JOIN tb_marca AS C
+		ON C.idMarca = A.marca_vehiculo
+    WHERE A.placa_vehiculo = placaVehi;
                         
-CALL SP_BUSCAR_CARRO ('ADU - 361');
+CALL SP_BUSCAR_CARRO_ORDEN ('ADU - 361');
 
 select * from tb_orden_trabajo;
 

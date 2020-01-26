@@ -168,7 +168,7 @@ public class RepuestoDAO extends ConectaBD { //La clase hereda de la Conexion a 
             rslSet = repuCarro.executeQuery();
             if (rslSet.next()) {
                 objRepu.setIdRepto(rslSet.getString("idRepuestos"));
-                objRepu.setDesRepto(rslSet.getString("desc_repu"));
+                objRepu.setNomRepto(rslSet.getString("nom_repu"));
                 objRepu.setTipoRepto(rslSet.getString("tipo_repu"));
                 objRepu.setCantRepto(rslSet.getString("cant_repu"));
                 return true;//Si todo está OK retorna true

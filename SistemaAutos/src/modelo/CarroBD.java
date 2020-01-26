@@ -24,7 +24,17 @@ public class CarroBD {
     private String obsCarro;
     private String clienteCarro;
     private String nomCliCarro;
+    private String telCliCarro;
 
+    public String getTelCliCarro() {
+        return telCliCarro;
+    }
+
+    public void setTelCliCarro(String telCliCarro) {
+        this.telCliCarro = telCliCarro;
+    }
+
+    
     public String getCodCarro() {
         return codCarro;
     }

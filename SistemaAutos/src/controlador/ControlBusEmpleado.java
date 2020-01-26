@@ -105,10 +105,17 @@ public class ControlBusEmpleado implements ActionListener {
             } else {
                 DefaultTableModel modTabla = (DefaultTableModel) frmEmpleBus.jtbEmpleado.getModel();
                 String codigo = modTabla.getValueAt(filaSel, 0).toString();
+                String nomEmple = modTabla.getValueAt(filaSel, 1).toString();
                 frmEmpleBus.dispose();
-                ControladorEmpleado.frmEmpleControl.txtCodEmpleado.setText(codigo);
-                if (String.valueOf(ControladorEmpleado.frmEmpleControl.txtCodEmpleado.getText()) != "") {
-                    ControladorEmpleado.frmEmpleControl.btnValEmple.doClick();
+                //
+                if (ControlOrdenTra.strFrmOrden == "S") {
+                    ControlOrdenTra.frmOrdenControl.txtCodEmple.setText(codigo);
+                    ControlOrdenTra.frmOrdenControl.txtNomEmple.setText(nomEmple);
+                } else {
+                    ControladorEmpleado.frmEmpleControl.txtCodEmpleado.setText(codigo);
+                    if (String.valueOf(ControladorEmpleado.frmEmpleControl.txtCodEmpleado.getText()) != "") {
+                        ControladorEmpleado.frmEmpleControl.btnValEmple.doClick();
+                    }
                 }
             }
         } catch (HeadlessException ex) {

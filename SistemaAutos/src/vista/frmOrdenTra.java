@@ -275,7 +275,6 @@ public class frmOrdenTra extends javax.swing.JFrame {
 
         txtTelCliente.setBackground(new java.awt.Color(204, 204, 204));
         txtTelCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtTelCliente.setText("3232140282");
         txtTelCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelClienteActionPerformed(evt);
@@ -303,7 +302,6 @@ public class frmOrdenTra extends javax.swing.JFrame {
 
         txtNomCliente.setBackground(new java.awt.Color(204, 204, 204));
         txtNomCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNomCliente.setText("CHRISTIAN CAMILO GUTIERREZ MONTOYA");
         txtNomCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomClienteActionPerformed(evt);
@@ -313,7 +311,6 @@ public class frmOrdenTra extends javax.swing.JFrame {
 
         txtCodRepuesto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCodRepuesto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCodRepuesto.setText("6003");
         txtCodRepuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodRepuestoActionPerformed(evt);
@@ -375,7 +372,6 @@ public class frmOrdenTra extends javax.swing.JFrame {
 
         jftFecOrden.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         jftFecOrden.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jftFecOrden.setText("17/11/2019");
         jftFecOrden.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jftFecOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 100, -1));
 
@@ -397,7 +393,6 @@ public class frmOrdenTra extends javax.swing.JFrame {
 
         txtCodEmple.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCodEmple.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCodEmple.setText("4391499");
         txtCodEmple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodEmpleActionPerformed(evt);

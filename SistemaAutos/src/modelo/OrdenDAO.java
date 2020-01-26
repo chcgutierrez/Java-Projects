@@ -19,6 +19,31 @@ import org.codehaus.groovy.syntax.Types;
  */
 public class OrdenDAO extends ConectaBD {
 
+    //Metodo Validar
+    public boolean ValidarAuto(CarroBD objCarro) {//Recibe objeto tipo CiudadBD
+
+        Connection reuConex = conectarDB();//Variable de tipo connection
+        ResultSet rslSet = null;
+        try {
+            //Invoca el SP y pasa los parametros
+            CallableStatement Validar = reuConex.prepareCall("CALL SP_BUSCAR_CARRO_ORDEN(?)");
+            Validar.setString(1, objCarro.getPlacaCarro());
+            rslSet = Validar.executeQuery();
+            if (rslSet.next()) {
+                objCarro.setNomCliCarro(rslSet.getString("nomCliente"));
+                objCarro.setTelCliCarro(rslSet.getString("tel_cliente"));
+                objCarro.setMarcaCarro(rslSet.getString("nom_marca"));
+                objCarro.setMotorCarro(rslSet.getString("modelo_vehiculo"));
+                objCarro.setModCarro(rslSet.getString("sexo_cliente"));
+                return true;//Si todo está OK retorna true
+            }
+            return false;//Si no hay datos
+        } catch (SQLException e) {//Captura el error
+            e.printStackTrace();//Muestra el error
+            return false;//Retorna false xq algo salió mal
+        }
+    }
+
     public boolean GuardarOrden(OrdenBD objOrden) {//Recibe objeto tipo CiudadBD
 
         Connection reuConex = conectarDB();//Variable de tipo connection
@@ -71,13 +96,12 @@ public class OrdenDAO extends ConectaBD {
         modTabRep.addColumn("Código");
         modTabRep.addColumn("Descripción");
         modTabRep.addColumn("Cantidad");
-        
+
 //        String datGrid[] = new String[3];
 //        datGrid[0] = String.valueOf(frmOrdenControl.txtCodRepuesto.getText());
 //        datGrid[1] = String.valueOf(frmOrdenControl.txtDescRepuesto.getText());
 //        datGrid[2] = String.valueOf(frmOrdenControl.spnCantRep.getValue().toString());
 //        modTabRep.addRow(datGrid);
-
         return modTabRep;//Devuelve el modelo con los datos
     }
 

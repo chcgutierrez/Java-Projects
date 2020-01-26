@@ -220,5 +220,30 @@ public class CarroDAO extends ConectaBD {
             e.printStackTrace();//Muestra el error
         }
     }
+    
+    //Metodo Validar
+    public boolean OrdenAuto(CarroBD objCarro) {//Recibe objeto tipo CiudadBD
+
+        Connection reuConex = conectarDB();//Variable de tipo connection
+        ResultSet rslSet = null;
+        try {
+            //Invoca el SP y pasa los parametros
+            CallableStatement Orden = reuConex.prepareCall("CALL SP_BUSCAR_CARRO_ORDEN(?)");
+            Orden.setString(1, objCarro.getPlacaCarro());
+            rslSet = Orden.executeQuery();
+            if (rslSet.next()) {
+                objCarro.setNomCliCarro(rslSet.getString("nomCliente"));
+                objCarro.setTelCliCarro(rslSet.getString("tel_cliente"));
+                objCarro.setMarcaCarro(rslSet.getString("nom_marca"));
+                objCarro.setMotorCarro(rslSet.getString("num_motor"));
+                objCarro.setModCarro(rslSet.getString("modelo_vehiculo"));
+                return true;//Si todo está OK retorna true
+            }
+            return false;//Si no hay datos
+        } catch (SQLException e) {//Captura el error
+            e.printStackTrace();//Muestra el error
+            return false;//Retorna false xq algo salió mal
+        }
+    }
 
 }

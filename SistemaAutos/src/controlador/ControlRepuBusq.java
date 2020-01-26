@@ -58,7 +58,7 @@ public class ControlRepuBusq implements ActionListener {
         colA.setMinWidth(90);
         //Celdas no editables
         for (int c = 0; c < frmBusqRepuesto.jtbRepuDatos.getColumnCount(); c++) {
-            Class <?> col_class = frmBusqRepuesto.jtbRepuDatos.getColumnClass(c);
+            Class<?> col_class = frmBusqRepuesto.jtbRepuDatos.getColumnClass(c);
             frmBusqRepuesto.jtbRepuDatos.setDefaultEditor(col_class, null); //Retirar editor
         }
     }
@@ -104,14 +104,21 @@ public class ControlRepuBusq implements ActionListener {
             filaSel = frmBusqRepuesto.jtbRepuDatos.getSelectedRow();
             if (filaSel == -1) {
                 Icon Alerta = new ImageIcon(getClass().getResource("/img/icons8_attention_32px.png"));
-                JOptionPane.showMessageDialog(frmBusqRepuesto, "No se ha seleccionado ninguna fila","Búsqueda Repuesto - MVC", JOptionPane.ERROR_MESSAGE, Alerta);
+                JOptionPane.showMessageDialog(frmBusqRepuesto, "No se ha seleccionado ninguna fila", "Búsqueda Repuesto - MVC", JOptionPane.ERROR_MESSAGE, Alerta);
             } else {
                 DefaultTableModel modTabla = (DefaultTableModel) frmBusqRepuesto.jtbRepuDatos.getModel();
                 String codigo = modTabla.getValueAt(filaSel, 0).toString();
+                String descRepuesto = modTabla.getValueAt(filaSel, 2).toString();
                 frmBusqRepuesto.dispose();
-                ControladorRepuesto.frmRepuestoControl.txtCodRepu.setText(codigo);
-                if (String.valueOf(ControladorRepuesto.frmRepuestoControl.txtCodRepu.getText()) != "") {
-                    ControladorRepuesto.frmRepuestoControl.btnValRepu.doClick();
+                //Si se llama desde OrdenTrabajo
+                if (ControlOrdenTra.strFrmOrden == "S") {
+                    ControlOrdenTra.frmOrdenControl.txtCodRepuesto.setText(codigo);                    
+                    ControlOrdenTra.frmOrdenControl.txtDescRepuesto.setText(descRepuesto);
+                } else {
+                    ControladorRepuesto.frmRepuestoControl.txtCodRepu.setText(codigo);
+                    if (String.valueOf(ControladorRepuesto.frmRepuestoControl.txtCodRepu.getText()) != "") {
+                        ControladorRepuesto.frmRepuestoControl.btnValRepu.doClick();
+                    }
                 }
             }
         } catch (HeadlessException ex) {

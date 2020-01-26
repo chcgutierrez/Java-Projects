@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import static controlador.ControladorCliente.frmClienteControl;
 import static controlador.ControladorColor.frmColorControl;
 import java.awt.HeadlessException;
 import java.awt.Image;
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,22 +39,37 @@ public class ControlOrdenTra implements ActionListener {
     private OrdenRepBD reuOrdenRepBD;//Objeto del tipo ColorBD
 
     private ClienteBD reuClieBD;//Objeto del tipo ColorBD
+
     private CarroBD reuCarroBD;//Objeto del tipo ColorBD
+    private CarroDAO reuCarroDAO;//Objeto del tipo ColorBD
 
     public static frmOrdenTra frmOrdenControl;//Objeto del tipo frmColor
     byte flgAct = 0;
+    public static String strFrmOrden = "S";
 
-    private EmpleadoBD reuEmpleBD;//Objeto del tipo ColorBD
-    private EmpleadoDAO reuEmpleDAO;//Objeto del tipo ColorBD
+    //private EmpleadoBD reuEmpleBD;//Objeto campos Tabla Empleado
+    private EmpleadoDAO reuEmpleDAO;//Objeto para metodos CRUD Empleado
 
-    private RepuestoBD reuRepuestoBD;//Objeto del tipo RepuestoBD
-    private RepuestoDAO reuRepuestoDAO;//Objeto del tipo RepuestoDAO
+    private RepuestoBD reuRepuestoBD;//Objeto campos Tabla Repuesto
+    private RepuestoDAO reuRepuestoDAO;//Objeto para metodos CRUD Repuesto
 
-    public ControlOrdenTra(EmpleadoBD reuEmpleBD, EmpleadoDAO reuEmpleDAO, OrdenBD reuOrdenBD, RepuestoBD reuRepuestoBD, RepuestoDAO reuRepuestoDAO, /*OrdenRepBD reuOrdenRepBD,*/ OrdenDAO reuOrdenDAO, frmOrdenTra frmOrdenControl) {
+    public ControlOrdenTra(CarroBD reuCarroBD, CarroDAO reuCarroDAO, EmpleadoBD reuEmpleBD, EmpleadoDAO reuEmpleDAO,
+            RepuestoBD reuRepuestoBD, RepuestoDAO reuRepuestoDAO,
+            OrdenBD reuOrdenBD, OrdenDAO reuOrdenDAO, frmOrdenTra frmOrdenControl) {
+
+        this.reuCarroBD = reuCarroBD;
+        this.reuCarroDAO = reuCarroDAO;
+        
+//        this.reuEmpleBD = reuEmpleBD;//Objeto campos Tabla Empleado
+//        this.reuEmpleDAO = reuEmpleDAO;//Objeto para metodos CRUD Empleado
+//        
+//        this.reuRepuestoBD = reuRepuestoBD;
+//        this.reuRepuestoDAO = reuRepuestoDAO;
+
         this.reuOrdenBD = reuOrdenBD;
         this.reuOrdenDAO = reuOrdenDAO;
         this.frmOrdenControl = frmOrdenControl;
-
+        
         this.frmOrdenControl.btnNuevo.addActionListener(this);
         this.frmOrdenControl.btnEditar.addActionListener(this);
         this.frmOrdenControl.btnBuscar.addActionListener(this);
@@ -67,6 +84,7 @@ public class ControlOrdenTra implements ActionListener {
         if (frmOrdenControl.txtCodEmple.getText().length() > 0) {
             this.frmOrdenControl.txtCodEmple.addFocusListener(new FocusAdapter() {
 
+                @Override
                 public void focusLost(FocusEvent e) {
                     //textField1_focusGained(e);
                     Icon Vacio = new ImageIcon(getClass().getResource("/img/icons8_close_window_32px.png"));
@@ -102,7 +120,7 @@ public class ControlOrdenTra implements ActionListener {
                         //
                         if (reuRepuestoDAO.repuOrden(reuRepuestoBD)) {
                             int codRepu = Integer.valueOf(String.valueOf(reuRepuestoBD.getIdRepto()));
-                            frmOrdenControl.txtDescRepuesto.setText(String.valueOf(reuRepuestoBD.getDesRepto()));
+                            frmOrdenControl.txtDescRepuesto.setText(String.valueOf(reuRepuestoBD.getNomRepto()));
                             frmOrdenControl.txtTipoRep.setText(String.valueOf(reuRepuestoBD.getTipoRepto()));
                             frmOrdenControl.txtUndRep.setText(String.valueOf(reuRepuestoBD.getCantRepto()));
                             System.out.println(codRepu);
@@ -120,6 +138,25 @@ public class ControlOrdenTra implements ActionListener {
             }
             );
         }
+        
+        //Abre buscador de Empleado con Doble Click en el Código
+        this.frmOrdenControl.txtCodEmple.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    TraerEmpleado();
+                }
+            }
+        });
+
+        //Abre buscador de Repuesto con Doble Click en el Código
+        this.frmOrdenControl.txtCodRepuesto.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    TraerRepuesto();
+                }
+            }
+        });
+        
     }
 
     public String fechaBD(String fecEntra) {
@@ -155,6 +192,19 @@ public class ControlOrdenTra implements ActionListener {
 
         }
 
+        //Pulsar boton Validar
+        if (e.getSource() == frmOrdenControl.btnValPlaca) {//Valida origen del evento
+
+            Icon Vacio = new ImageIcon(getClass().getResource("/img/icons8_close_window_32px.png"));
+
+            if (frmOrdenControl.txtPlaca.getText().length() == 0) {
+                JOptionPane.showMessageDialog(frmOrdenControl, "Debe ingresar un criterio", "Validación - MVC", JOptionPane.ERROR_MESSAGE, Vacio);
+                frmOrdenControl.txtPlaca.requestFocusInWindow();
+            } else {
+                Validar();
+            }
+        }
+
     }
 
     public void Guardar() {//Metodo para Guardar y Editar
@@ -167,7 +217,7 @@ public class ControlOrdenTra implements ActionListener {
             reuOrdenBD.setFecOrden(fechaBD(frmOrdenControl.txtCodEmple.getText()));//Pasa la fecha a formato de BD
 
             reuOrdenBD.setCodCliOrden(String.valueOf(reuClieBD.getNumdoCliente()));
-            reuOrdenBD.setCodEmpleOrden(String.valueOf(reuEmpleBD.getCodEmple()));
+            //reuOrdenBD.setCodEmpleOrden(String.valueOf(reuEmpleBD.getCodEmple()));
             reuOrdenBD.setCodVehiculo(String.valueOf(reuCarroBD.getCodCarro()));
             reuOrdenBD.setValOrden(frmOrdenControl.txtModeloCarro.getText());
             reuOrdenBD.setDetOrden(frmOrdenControl.txaDetOrden.getText());
@@ -184,6 +234,28 @@ public class ControlOrdenTra implements ActionListener {
             } catch (HeadlessException hexc) {
                 hexc.printStackTrace();
             }
+        }
+    }
+
+    public void Validar() {//Metodo para Validar
+        Icon Validar = new ImageIcon(getClass().getResource("/img/icons8_help_32px.png"));
+        reuCarroBD.setPlacaCarro(frmOrdenControl.txtPlaca.getText());
+        try {
+            if (reuCarroDAO.OrdenAuto(reuCarroBD)) {
+                if (JOptionPane.showConfirmDialog(frmClienteControl, "Ya existen datos. Mostrar Datos?", "Validar - MVC",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.YES_NO_OPTION, Validar) == JOptionPane.YES_OPTION) {
+                    //MenuValidar();
+                    frmOrdenControl.txtNomCliente.setText(String.valueOf(reuCarroBD.getNomCliCarro()));
+                    frmOrdenControl.txtTelCliente.setText(String.valueOf(reuCarroBD.getTelCliCarro()));
+                    frmOrdenControl.txtMarcaCarro.setText(String.valueOf(reuCarroBD.getMarcaCarro()));
+                    frmOrdenControl.txtMotorCarro.setText(String.valueOf(reuCarroBD.getMotorCarro()));
+                    frmOrdenControl.txtModeloCarro.setText(String.valueOf(reuCarroBD.getModCarro()));
+                }
+            } else {
+                //MenuGuardar();
+            }
+        } catch (HeadlessException hexc) {
+            hexc.printStackTrace();
         }
     }
 
@@ -261,6 +333,28 @@ public class ControlOrdenTra implements ActionListener {
         } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
+    }
+
+    //Llamo al Empleado al hacer Doble Click
+    public void TraerEmpleado() {
+        frmBusEmpleado AppFormaEmpleado = new frmBusEmpleado();
+        EmpleadoBD AppEmpleadoBD = new EmpleadoBD();//Instancio y creo un nuevo objeto
+        EmpleadoDAO AppEmpleadoDAO = new EmpleadoDAO();//Instancio y creo un nuevo objeto
+        ControlBusEmpleado AppBusEmpleado = new ControlBusEmpleado(AppEmpleadoBD, AppEmpleadoDAO, AppFormaEmpleado);
+        AppBusEmpleado.IniciarEmpleBus();
+        AppFormaEmpleado.setVisible(true);//Invoco el metodo
+        AppFormaEmpleado.setDefaultCloseOperation(2); //Cierro sin parar la aplicacion
+    }
+
+    //Llamo al Repuesto al hacer Doble Click
+    public static void TraerRepuesto() {
+        frmRepuBusq AppFormBusqRepu = new frmRepuBusq();
+        RepuestoBD AppRepuestoBD = new RepuestoBD();//Instancio y creo un nuevo objeto
+        RepuestoDAO AppRepuestoDAO = new RepuestoDAO();//Instancio y creo un nuevo objeto
+        ControlRepuBusq AppBusRepuesto = new ControlRepuBusq(AppRepuestoBD, AppRepuestoDAO, AppFormBusqRepu);
+        AppBusRepuesto.IniciarRepuestoBusq();
+        AppFormBusqRepu.setVisible(true);//Invoco el metodo
+        AppFormBusqRepu.setDefaultCloseOperation(2); //Cierro sin parar la aplicacion
     }
 
 }

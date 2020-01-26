@@ -67,6 +67,7 @@ public class ControladorCarro implements ActionListener {
         if (frmCarroControl.txtCodCliente.getText().length() > 0) {
             this.frmCarroControl.txtCodCliente.addFocusListener(new FocusAdapter() {
 
+                @Override
                 public void focusLost(FocusEvent e) {
                     //textField1_focusGained(e);
                     Icon Vacio = new ImageIcon(getClass().getResource("/img/icons8_close_window_32px.png"));

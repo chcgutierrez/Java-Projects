@@ -30,6 +30,9 @@ public class AppSysAutos {
 
         ClienteBD AppClienteBD = new ClienteBD();//Instancio y creo un nuevo objeto
         ClienteDAO AppClienteDAO = new ClienteDAO();//Instancio y creo un nuevo objeto
+        
+        CarroBD AppCarroBD = new CarroBD();//Instancio y creo un nuevo objeto
+        CarroDAO AppCarroDAO = new CarroDAO();//Instancio y creo un nuevo objeto
 
         RepuestoBD AppRepuestoBD = new RepuestoBD();//Instancio y creo un nuevo objeto
         RepuestoDAO AppRepuestoDAO = new RepuestoDAO();//Instancio y creo un nuevo objeto
@@ -38,7 +41,8 @@ public class AppSysAutos {
         EmpleadoDAO AppEmpleDAO = new EmpleadoDAO();//Instancio y creo un nuevo objeto
 
         //Instancio y creo un nuevo objeto y paso los anteriores como parametro
-        ControlOrdenTra AppControlOrden = new ControlOrdenTra(AppEmpleBD, AppEmpleDAO, AppOrdenBD, AppRepuestoBD, AppRepuestoDAO, AppOrdenDAO, AppfrmOrden);
+        ControlOrdenTra AppControlOrden = new ControlOrdenTra(AppCarroBD, AppCarroDAO, AppEmpleBD, AppEmpleDAO,
+                                                              AppRepuestoBD, AppRepuestoDAO, AppOrdenBD, AppOrdenDAO, AppfrmOrden);
         try {
             AppControlOrden.IniciarOrden();//Invoco el metodo para el form
         } catch (ParseException ex) {
