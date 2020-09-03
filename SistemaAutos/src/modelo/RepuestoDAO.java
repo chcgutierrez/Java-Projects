@@ -136,8 +136,9 @@ public class RepuestoDAO extends ConectaBD { //La clase hereda de la Conexion a 
             modBusqRepto.addColumn("Código");
             modBusqRepto.addColumn("Tipo");
             modBusqRepto.addColumn("Nombre");
+            modBusqRepto.addColumn("Unidades");
 
-            String datosBusq[] = new String[3];//Arreglo para las filas
+            String datosBusq[] = new String[4];//Arreglo para las filas
 
             //Invoca el SP y pasa los parametros
             CallableStatement Busqueda = reuConex.prepareCall("CALL SP_BUSQ_REPTO(?)");
@@ -147,6 +148,7 @@ public class RepuestoDAO extends ConectaBD { //La clase hereda de la Conexion a 
                 datosBusq[0] = rslSet.getString("cod_repu");
                 datosBusq[1] = rslSet.getString("tipo_repu");
                 datosBusq[2] = rslSet.getString("nom_repu");
+                datosBusq[3] = rslSet.getString("cant_repu");
                 modBusqRepto.addRow(datosBusq);//Agrega las filas al modelo
             }
 

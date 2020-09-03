@@ -232,6 +232,7 @@ public class ControlOrdenTra implements ActionListener {
 //            }
 //        }
 //    }
+    
     //Metodo para Validar
     public void Validar() {
         Icon Validar = new ImageIcon(getClass().getResource("/img/icons8_help_32px.png"));

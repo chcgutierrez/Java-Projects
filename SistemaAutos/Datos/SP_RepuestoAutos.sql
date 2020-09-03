@@ -106,6 +106,21 @@ CREATE PROCEDURE SP_BUSQ_REPTO(
     
 CALL SP_BUSQ_REPTO ('N');
 
+#Hacer un ALTER en SP
+
+USE `sysautos`;
+DROP procedure IF EXISTS `SP_BUSQ_REPTO`;
+
+DELIMITER $$
+USE `sysautos`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_BUSQ_REPTO`(
+    nomRepto VARCHAR(45)) 
+    SELECT
+		cod_repu, tipo_repu, nom_repu, cant_repu
+	FROM tb_repuesto WHERE est_repuesto='A' AND nom_repu LIKE CONCAT('%', nomRepto, '%');$$
+
+DELIMITER ;
+
 /*
 ================================================================================
 Procedimiento: SP_BUSCAR_REPU_CARRO

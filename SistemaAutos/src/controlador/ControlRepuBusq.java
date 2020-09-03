@@ -108,12 +108,16 @@ public class ControlRepuBusq implements ActionListener {
             } else {
                 DefaultTableModel modTabla = (DefaultTableModel) frmBusqRepuesto.jtbRepuDatos.getModel();
                 String codigo = modTabla.getValueAt(filaSel, 0).toString();
+                String strTipoRep = modTabla.getValueAt(filaSel, 1).toString();
                 String descRepuesto = modTabla.getValueAt(filaSel, 2).toString();
+                String strUnDisRep = modTabla.getValueAt(filaSel, 3).toString();
                 frmBusqRepuesto.dispose();
                 //Si se llama desde OrdenTrabajo
                 if (ControlOrdenTra.strFrmOrden == "S") {
-                    ControlOrdenTra.frmOrdenControl.txtCodRepuesto.setText(codigo);                    
+                    ControlOrdenTra.frmOrdenControl.txtCodRepuesto.setText(codigo);
+                    ControlOrdenTra.frmOrdenControl.txtTipoRep.setText(strTipoRep);
                     ControlOrdenTra.frmOrdenControl.txtDescRepuesto.setText(descRepuesto);
+                    ControlOrdenTra.frmOrdenControl.txtUndRep.setText(strUnDisRep);
                 } else {
                     ControladorRepuesto.frmRepuestoControl.txtCodRepu.setText(codigo);
                     if (String.valueOf(ControladorRepuesto.frmRepuestoControl.txtCodRepu.getText()) != "") {
